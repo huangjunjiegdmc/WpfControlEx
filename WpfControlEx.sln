@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfControlEx", "WpfControlEx\WpfControlEx.csproj", "{4992A228-F10D-4E9C-AE49-DC313908452E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfControlExDemo", "WpfControlExDemo\WpfControlExDemo.csproj", "{41ED7640-CD10-44F7-BAB1-CF84225BEA9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4992A228-F10D-4E9C-AE49-DC313908452E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4992A228-F10D-4E9C-AE49-DC313908452E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4992A228-F10D-4E9C-AE49-DC313908452E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4992A228-F10D-4E9C-AE49-DC313908452E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41ED7640-CD10-44F7-BAB1-CF84225BEA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41ED7640-CD10-44F7-BAB1-CF84225BEA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41ED7640-CD10-44F7-BAB1-CF84225BEA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41ED7640-CD10-44F7-BAB1-CF84225BEA9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95914033-9E76-45EA-874B-3EBA9D4B0361}
+	EndGlobalSection
+EndGlobal

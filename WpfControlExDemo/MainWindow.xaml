@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfControlExDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfControlExDemo"
+        xmlns:md="clr-namespace:AForge.Controls;assembly=AForge.Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <WindowsFormsHost>
+                <md:VideoSourcePlayer x:Name="videoSourcePlayer"/>
+
+            </WindowsFormsHost>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Border BorderThickness="0,1,0,0" BorderBrush="LightGray">
+                <StackPanel Orientation="Horizontal" Margin="5" Height="50">
+                    <Button Name="btnPlay" Content="Play" Width="100" Height="30" Margin="5" Click="Play_Click"></Button>
+                    <Button Name="btnStop" Content="Stop" Width="100" Height="30" Margin="0,5,5,5" Click="btnStop_Click"></Button>
+                    <Button Name="btnCapture" Content="Capture" Width="100" Height="30" Margin="0,5,5,5" Click="btnCapture_Click"></Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
