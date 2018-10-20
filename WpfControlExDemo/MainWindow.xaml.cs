@@ -18,13 +18,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfControlEx.Controls;
 
 namespace WpfControlExDemo
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : WindowEx
     {
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
@@ -170,6 +171,29 @@ namespace WpfControlExDemo
             bmp.Save(img);
 
             videoSource.NewFrame -= new NewFrameEventHandler(videoSource_NewFrame);
+        }
+        
+
+        private void b_Click(object sender, RoutedEventArgs e)
+        {
+#pragma warning disable 618
+            if (this.WindowState == WindowState.Maximized)
+            {
+                //this.WindowState = WindowState.Normal;
+                ControlzEx.Windows.Shell.SystemCommands.RestoreWindow(this);
+            }
+            else
+            {
+                //this.WindowState = WindowState.Maximized;
+                ControlzEx.Windows.Shell.SystemCommands.MaximizeWindow(this);
+            }
+#pragma warning restore 618
+        }
+
+        private void btnNewWin_Click(object sender, RoutedEventArgs e)
+        {
+            MyWindow myWindow = new MyWindow();
+            myWindow.Show();
         }
     }
 }
