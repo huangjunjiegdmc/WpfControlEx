@@ -170,8 +170,8 @@
 
                             <Grid Grid.RowSpan="2" x:Name="PART_ResizerContainers" Visibility="Hidden">
                                 <Grid.Resources>
-                                    <sys:Double x:Key="StraightResizerSize">8</sys:Double>
-                                    <sys:Double x:Key="SlantResizerSize">16</sys:Double>
+                                    <sys:Double x:Key="StraightResizerSize">1</sys:Double>
+                                    <sys:Double x:Key="SlantResizerSize">8</sys:Double>
                                     <Style TargetType="{x:Type Thumb}">
                                         <Setter Property="Template">
                                             <Setter.Value>
@@ -215,8 +215,8 @@
                                        VerticalAlignment="Bottom" Cursor="SizeNESW" x:Name="PART_BottomLeftResizer"/>
                             </Grid>
 
-                            <Border x:Name="PART_ContentBorder" Grid.Row="1" BorderBrush="#FF5A3D1C" BorderThickness="2"
-                                    Margin="8,0,8,8" ClipToBounds="True">
+                            <Border x:Name="PART_ContentBorder" Grid.Row="1" BorderBrush="LightBlue" BorderThickness="1"
+                                    Margin="1,0,1,1" ClipToBounds="True">
                                 <AdornerDecorator>
                                     <ContentPresenter Margin="{TemplateBinding Padding}" 
                                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -236,7 +236,7 @@
                         </MultiTrigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_ContentBorder" Property="Margin" Value="0"/>
-                            <Setter TargetName="PART_ContentBorder" Property="BorderThickness" Value="0,2,0,0"/>
+                            <Setter TargetName="PART_ContentBorder" Property="BorderThickness" Value="0,1,0,0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
