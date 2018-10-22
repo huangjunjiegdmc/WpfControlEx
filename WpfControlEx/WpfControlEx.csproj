@@ -51,6 +51,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Controls\Native\Constants.cs" />
+    <Compile Include="Controls\Native\Win32Api.cs" />
+    <Compile Include="Controls\Native\WM.cs" />
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Controls\WindowEx.cs">
       <SubType>Code</SubType>

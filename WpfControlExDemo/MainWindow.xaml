@@ -4,34 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfControlExDemo"
-        xmlns:md="clr-namespace:AForge.Controls;assembly=AForge.Controls"
         xmlns:wpfcontrolex="clr-namespace:WpfControlEx.Controls;assembly=WpfControlEx"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Loaded="Window_Loaded">
+                       WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <Grid>
-            <WindowsFormsHost>
-                <md:VideoSourcePlayer x:Name="videoSourcePlayer"/>
-
-            </WindowsFormsHost>
-        </Grid>
-
-        <Grid Grid.Row="1">
-            <Border BorderThickness="0,1,0,0" BorderBrush="LightGray">
-                <StackPanel Orientation="Horizontal" Margin="5" Height="50" >
-                    <Button Name="btnPlay" Content="Play" Width="100" Height="30" Margin="5" Click="Play_Click"></Button>
-                    <Button Name="btnStop" Content="Stop" Width="100" Height="30" Margin="0,5,5,5" Click="btnStop_Click"></Button>
-                    <Button Name="btnCapture" Content="Capture" Width="100" Height="30" Margin="0,5,5,5" Click="btnCapture_Click"></Button>
-                    <Button Name="b" Content="Max" Width="100" Height="30" Margin="0,5,5,5" Click="b_Click"></Button>
-                    <Button Name="btnNewWin" Content="NewWin" Width="100" Height="30" Margin="0,5,5,5" Click="btnNewWin_Click"></Button>
-                </StackPanel>
-            </Border>
-        </Grid>
+        
     </Grid>
 </wpfcontrolex:WindowEx>

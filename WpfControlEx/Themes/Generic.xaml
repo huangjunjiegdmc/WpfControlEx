@@ -7,63 +7,41 @@
 
     <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 
-    <Style x:Key="styleWindowButtonMinimize" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+    <LinearGradientBrush x:Key="WindowTitleBackground"
+                         StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF1890FF" Offset="0"/>
+        <GradientStop Color="#FF1890FF" Offset="0.5"/>
+        <GradientStop Color="#FF1890FF" Offset="0.5"/>
+        <GradientStop Color="#FF1890FF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="WindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
+        <GradientStop Color="#FF47A8EE" Offset="0"/>
+        <GradientStop Color="#FF47A8EE" Offset="1"/>
+    </LinearGradientBrush>
+
+    <Style x:Key="ButtonMinimize" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid x:Name="buttonClose">
-                        <Ellipse Stroke="{x:Null}" StrokeThickness="1" x:Name="btnEllipse" >
-                            <Ellipse.Fill>
-                                <RadialGradientBrush>
-                                    <GradientStop Color="#BFABA7A4" Offset="0.777"/>
-                                    <GradientStop Color="#FF897F77" Offset="1"/>
-                                </RadialGradientBrush>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <Path x:Name="iconMin" Width="11.1641" Height="2.06641" Canvas.Left="3.97266" Canvas.Top="8.51962" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 5.00659,8.51962C 4.43613,8.51831 3.97266,8.98184 3.97266,9.55347C 3.97266,10.1238 4.435,10.586 5.00659,10.586L 14.1028,10.586C 14.6733,10.586 15.1353,10.1238 15.1367,9.55215C 15.1367,8.98056 14.6733,8.51962 14.1028,8.51962L 5.00659,8.51962 Z "/>
-                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                    <Grid Background="{TemplateBinding Background}">
+                        <Path Stretch="Fill" Stroke="White" StrokeThickness="1" Width="11" Height="11">
+                            <Path.Data>
+                                <LineGeometry StartPoint="0,0.5" EndPoint="1,0.5"></LineGeometry>
+                            </Path.Data>
+                        </Path>                        
+                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"/>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="True"/>
-                        <Trigger Property="IsDefaulted" Value="True"/>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" Value="#FF5D4E3E" TargetName="btnEllipse"/>
+                            <Setter Property="Background" Value="#5AFFFFFF"/>
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="True"/>
-                        <Trigger Property="IsEnabled" Value="False"/>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="styleWindowButtonMaximize" BasedOn="{x:Null}" TargetType="{x:Type ToggleButton}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Grid>
-                        <Ellipse x:Name="btnEllipse" Stroke="{x:Null}" StrokeThickness="1">
-                            <Ellipse.Fill>
-                                <RadialGradientBrush>
-                                    <GradientStop Color="#BFABA7A4" Offset="0.777"/>
-                                    <GradientStop Color="#FF897F77" Offset="1"/>
-                                </RadialGradientBrush>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <Path x:Name="iconMax" Width="12.4011" Height="9.93359" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 390.641,289.034C 389.073,289.034 387.8,290.308 387.8,291.875L 387.8,296.125C 387.8,297.692 389.073,298.967 390.641,298.967L 397.362,298.967C 398.927,298.967 400.201,297.692 400.201,296.125L 400.201,291.875C 400.201,290.308 398.927,289.034 397.362,289.034L 390.641,289.034 Z M 389.399,296.125L 389.399,291.875C 389.399,291.19 389.956,290.634 390.641,290.634L 397.362,290.634C 398.045,290.634 398.602,291.19 398.602,291.875L 398.602,296.125C 398.602,296.81 398.045,297.367 397.362,297.367L 390.641,297.367C 389.956,297.367 389.399,296.81 389.399,296.125 Z "/>
-                        <Path x:Name="iconRestore" Visibility="Collapsed" Width="11.6719" Height="9.48242" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 411.826,302.421C 411.802,301.775 411.28,301.259 410.629,301.259L 404.483,301.259C 403.836,301.257 403.312,301.775 403.286,302.421L 403.277,302.421C 403.277,302.421 403.277,303.254 403.277,304.177L 407.126,304.177C 407.984,304.177 408.679,304.853 408.722,305.728L 408.722,307.822L 410.629,307.822C 411.294,307.822 411.834,307.283 411.836,306.615C 411.836,306.507 411.836,302.421 411.836,302.421L 411.826,302.421 Z M 407.126,304.956L 400.979,304.956C 400.545,304.955 400.19,305.301 400.164,305.728L 400.164,309.925C 400.164,310.374 400.531,310.741 400.981,310.741L 407.126,310.741C 407.575,310.741 407.942,310.374 407.944,309.923L 407.934,305.742C 407.918,305.301 407.565,304.956 407.126,304.956 Z "/>
-                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="True"/>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" Value="#FF6E8F9A" TargetName="btnEllipse"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True"/>
-                        <Trigger Property="IsEnabled" Value="False"/>
-                        <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="iconMax" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="iconRestore" Property="Visibility" Value="Visible" />
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#5A666666"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -71,31 +49,104 @@
         </Setter>
     </Style>
 
-    <Style x:Key="styleMainWindowButtonClose" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+    <Style x:Key="ButtonMaximize" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid x:Name="buttonClose">
-                        <Ellipse Stroke="{x:Null}" StrokeThickness="1" x:Name="btnEllipse" >
-                            <Ellipse.Fill>
-                                <RadialGradientBrush>
-                                    <GradientStop Color="#BFABA7A4" Offset="0.777"/>
-                                    <GradientStop Color="#FF897F77" Offset="1"/>
-                                </RadialGradientBrush>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <Path x:Name="iconX" Width="8.50003" Height="8.50006" Stretch="Fill" Fill="#FF8D1200" Data="F1 M 401.281,299.818L 398.795,297.333L 401.281,294.847C 401.684,294.445 401.684,293.79 401.281,293.386C 400.877,292.982 400.222,292.982 399.82,293.386L 397.334,295.872L 394.848,293.386C 394.445,292.982 393.79,292.982 393.386,293.386C 392.982,293.79 392.982,294.445 393.386,294.848L 395.872,297.334L 393.387,299.818C 392.984,300.222 392.982,300.876 393.387,301.281C 393.791,301.684 394.445,301.683 394.848,301.279L 397.333,298.795L 399.818,301.281C 400.222,301.684 400.877,301.684 401.281,301.281C 401.684,300.877 401.684,300.222 401.281,299.818 Z "/>
-                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                    <Grid Background="{TemplateBinding Background}">
+                        <Path Stretch="Fill" Stroke="White" StrokeThickness="1" Width="10" Height="10">
+                            <Path.Data>
+                                <RectangleGeometry Rect="0 0 1 1"></RectangleGeometry>
+                            </Path.Data>
+                        </Path>
+                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                          RecognizesAccessKey="True"/>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="True"/>
-                        <Trigger Property="IsDefaulted" Value="True"/>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" Value="#FF333332" TargetName="btnEllipse"/>
-                            <Setter Property="Fill" Value="#FFFFFFFF" TargetName="iconX"/>
+                            <Setter Property="Background" Value="#5AFFFFFF"/>
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="True"/>
-                        <Trigger Property="IsEnabled" Value="False"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#5A666666"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonRestore" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Path Stretch="Fill" Stroke="White" StrokeThickness="1" Width="10" Height="10">
+                            <Path.RenderTransform>
+                                <TranslateTransform X="1" Y="-1"></TranslateTransform>
+                            </Path.RenderTransform>
+                            <Path.Data>
+                                <RectangleGeometry Rect="0 0 1 1"></RectangleGeometry>
+                            </Path.Data>
+                        </Path>
+                        <Path Stretch="Fill" Fill="{StaticResource WindowTitleBackground}" Stroke="White" StrokeThickness="1" Width="10" Height="10">
+                            <Path.RenderTransform>
+                                <TranslateTransform X="-1" Y="1"></TranslateTransform>
+                            </Path.RenderTransform>
+                            <Path.Data>
+                                <RectangleGeometry Rect="0 0 1 1"></RectangleGeometry>
+                            </Path.Data>
+                        </Path>
+                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                          RecognizesAccessKey="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#5AFFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#5A666666"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonClose" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Path Stretch="Fill" Stroke="White" StrokeThickness="1" Width="11" Height="11">
+                            <Path.Data>
+                                <LineGeometry StartPoint="0,0" EndPoint="1,1"></LineGeometry>
+                            </Path.Data>
+                        </Path>
+                        <Path Stretch="Fill" Fill="{StaticResource WindowTitleBackground}" 
+                              Stroke="White" StrokeThickness="1" Width="11" Height="11">
+                            <Path.Data>
+                                <LineGeometry StartPoint="0,1" EndPoint="1,0"></LineGeometry>
+                            </Path.Data>
+                        </Path>
+                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                          RecognizesAccessKey="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFF45454"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#C0F45454"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -103,140 +154,160 @@
     </Style>
 
     <Style TargetType="{x:Type controls:WindowEx}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="Background" Value="White"/>
-        <!--<Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush MappingMode="Absolute" StartPoint="327.657227,-92.486328" EndPoint="495.033722,694.958313">
-                    <LinearGradientBrush.Transform>
-                        <MatrixTransform Matrix="2.000000,0.000000,-0.000000,-1.000000,-4.095703,626.486816" />
-                    </LinearGradientBrush.Transform>
-                    <GradientStop Offset="0.743034" Color="LightPink" />
-                    <GradientStop Offset="0.835913" Color="Red" />
-                    <GradientStop Offset="0.840783" Color="DarkRed" />
-                    <GradientStop Offset="0.842105" Color="Red" />
-                    <GradientStop Offset="0.990868" Color="LightPink" />
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>-->
-        <Setter Property="BorderBrush" Value="#FF5A3D1C"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="MinWidth" Value="90"/>
-        <Setter Property="MinHeight" Value="33"/>
-        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:WindowEx}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Name="PART_WindowBorder" Background="{TemplateBinding Background}"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource WindowNormalBorder}">
                         <Grid SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="33" />
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <!-- Window header-->
 
-                            <Grid Name="PART_HeaderContainer" Background="Transparent">
-                                <StackPanel Orientation="Horizontal" Margin="4,0" 
-                                            Visibility="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent},
-                                    Path=ShowDefaultHeader, Converter={StaticResource BoolToVisibilityConverter}}">
-                                    <Image Height="24" Width="24" HorizontalAlignment="Left"
-                                           VerticalAlignment="Center" Source="{TemplateBinding Icon}"/>
-                                    <TextBlock Text="{TemplateBinding Title}" Margin="4,0" VerticalAlignment="Center"
-                                               FontFamily="Arial" FontSize="15" Foreground="Black" TextWrapping="NoWrap"/>
-                                </StackPanel>
-                                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
-                                    <Button x:Name="PART_MinimizeButton" IsTabStop="False" Cursor="Hand" 
-                                            Style="{StaticResource styleWindowButtonMinimize}" Width="19" Height="19"
-                                            Margin="0,0,4,0" ToolTip="Minimize" 
-                                            Visibility="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, 
-                                        Path=CanResize, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                    <ToggleButton x:Name="PART_RestoreButton" IsTabStop="False" Cursor="Hand"
-                                                  Style="{StaticResource styleWindowButtonMaximize}" Width="19" Height="19"
-                                                  Margin="0,0,4,0" ToolTip="Maximize"
-                                                  Visibility="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, 
-                                        Path=CanResize, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                    <Button x:Name="PART_CloseButton" IsTabStop="False" Cursor="Hand" 
-                                            Style="{StaticResource styleMainWindowButtonClose}" Width="19" Height="19" 
-                                            Margin="0,0,0,0" ToolTip="Close"/>
+                            <Grid.Resources>
+                                <sys:Double x:Key="StraightResizerSize">3</sys:Double>
+                                <sys:Double x:Key="SlantResizerSize">8</sys:Double>
+                                <Style TargetType="{x:Type Thumb}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Rectangle Fill="Transparent"/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Grid.Resources>
 
-                                </StackPanel>
-                                <ContentPresenter ContentSource="Header" VerticalAlignment="Stretch" 
-                                                  HorizontalAlignment="Stretch"/>
+                            <Grid Name="PART_TitleBar" Height="30">
+                                <Border BorderThickness="0,0,0,0" BorderBrush="LightGray"
+                                    Background="{StaticResource WindowTitleBackground}">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image x:Name="PART_Icon" 
+                                               Source="{TemplateBinding Icon}"
+                                               Width="20" Height="20" 
+                                               Margin="5,0,0,0" 
+                                               VerticalAlignment="Center"></Image>
+                                        <TextBlock Grid.Column="1" FontSize="14" 
+                                                   Text="{TemplateBinding Title}"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center" 
+                                                   Margin="5,0,0,0"/>
+                                        <Button Grid.Column="2" Name="PART_TitleMinimizeButton"
+                                                Width="40" Height="30"  ToolTip="最小化"
+                                                Style="{StaticResource ButtonMinimize}" 
+                                                Padding="5,0,5,0" VerticalAlignment="Top"/>
+                                        <Button Grid.Column="3" Name="PART_TitleMaximizeButton"
+                                                Width="40" Height="30"  ToolTip="最大化"
+                                                Style="{StaticResource ButtonMaximize}"
+                                                Padding="5,0,5,0" VerticalAlignment="Top"/>
+                                        <Button Grid.Column="4" Name="PART_TitleRestoreButton"
+                                                Width="40" Height="30"  ToolTip="向下还原"
+                                                Style="{StaticResource ButtonRestore}"
+                                                Padding="5,0,5,0" VerticalAlignment="Top"/>
+                                        <Button Grid.Column="5" Name="PART_TitleCloseButton" 
+                                                Width="40" Height="30"  ToolTip="关闭"
+                                                Style="{StaticResource ButtonClose}"
+                                                HorizontalAlignment="Right" 
+                                                Margin="0,0,5,0" VerticalAlignment="Top" >
+                                        </Button>
+                                    </Grid>
+                                </Border>
                             </Grid>
 
-                            <Grid Grid.RowSpan="2" x:Name="PART_ResizerContainers" Visibility="Hidden">
-                                <Grid.Resources>
-                                    <sys:Double x:Key="StraightResizerSize">1</sys:Double>
-                                    <sys:Double x:Key="SlantResizerSize">8</sys:Double>
-                                    <Style TargetType="{x:Type Thumb}">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate>
-                                                    <Rectangle Fill="Transparent"/>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </Grid.Resources>
-                                <Thumb Width="{StaticResource StraightResizerSize}"
+                            <Grid Grid.Row="1">
+                                <AdornerDecorator>
+                                    <ContentPresenter />
+                                </AdornerDecorator>
+                            </Grid>
+
+                            <Thumb Width="{StaticResource StraightResizerSize}"
                                        VerticalAlignment="Stretch" HorizontalAlignment="Left" Cursor="SizeWE" 
-                                       x:Name="PART_LeftResizer"/>
-                                <Thumb Height="{StaticResource StraightResizerSize}" 
+                                       x:Name="PART_LeftResizer" Visibility="Collapsed"
+                                   Grid.RowSpan="2"/>
+                            <Thumb Height="{StaticResource StraightResizerSize}" 
                                        VerticalAlignment="Top" HorizontalAlignment="Stretch" Cursor="SizeNS"
-                                       x:Name="PART_TopResizer"/>
-                                <Thumb Width="{StaticResource StraightResizerSize}" 
+                                       x:Name="PART_TopResizer" Visibility="Collapsed"/>
+                            <Thumb Width="{StaticResource StraightResizerSize}" 
                                        VerticalAlignment="Stretch" HorizontalAlignment="Right" Cursor="SizeWE" 
-                                       x:Name="PART_RightResizer"/>
-                                <Thumb Height="{StaticResource StraightResizerSize}"
+                                       x:Name="PART_RightResizer" Visibility="Collapsed"
+                                   Grid.RowSpan="2"/>
+                            <Thumb Height="{StaticResource StraightResizerSize}"
                                        VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Cursor="SizeNS"
-                                       x:Name="PART_BottomResizer"/>
-                                <ResizeGrip Width="{StaticResource SlantResizerSize}" 
+                                       x:Name="PART_BottomResizer" Visibility="Collapsed"
+                                   Grid.Row="1"/>
+                            <ResizeGrip Width="{StaticResource SlantResizerSize}" 
                                             Height="{StaticResource SlantResizerSize}" HorizontalAlignment="Right" 
-                                            VerticalAlignment="Bottom" 
-                                            Visibility="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, 
-                                    Path=ShowResizeGrip, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                <Thumb Width="{StaticResource SlantResizerSize}" 
+                                            VerticalAlignment="Bottom"
+                                            x:Name="PART_ResizeGrip" Visibility="Collapsed"
+                                        Grid.Row="1"/>
+                            <Thumb Width="{StaticResource SlantResizerSize}" 
                                        Height="{StaticResource SlantResizerSize}" 
                                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" 
-                                       x:Name="PART_BottomRightResizer"/>
-                                <Thumb Width="{StaticResource SlantResizerSize}"
+                                       x:Name="PART_BottomRightResizer" Visibility="Collapsed"
+                                   Grid.Row="1"/>
+                            <Thumb Width="{StaticResource SlantResizerSize}"
                                        Height="{StaticResource SlantResizerSize}"
                                        HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="SizeNESW" 
-                                       x:Name="PART_TopRightResizer"/>
-                                <Thumb Width="{StaticResource SlantResizerSize}"
+                                       x:Name="PART_TopRightResizer" Visibility="Collapsed"/>
+                            <Thumb Width="{StaticResource SlantResizerSize}"
                                        Height="{StaticResource SlantResizerSize}" HorizontalAlignment="Left" 
-                                       VerticalAlignment="Top" Cursor="SizeNWSE" x:Name="PART_TopLeftResizer"/>
-                                <Thumb Width="{StaticResource SlantResizerSize}"
+                                       VerticalAlignment="Top" Cursor="SizeNWSE" 
+                                       x:Name="PART_TopLeftResizer" Visibility="Collapsed"/>
+                            <Thumb Width="{StaticResource SlantResizerSize}"
                                        Height="{StaticResource SlantResizerSize}" HorizontalAlignment="Left" 
-                                       VerticalAlignment="Bottom" Cursor="SizeNESW" x:Name="PART_BottomLeftResizer"/>
-                            </Grid>
-
-                            <Border x:Name="PART_ContentBorder" Grid.Row="1" BorderBrush="LightBlue" BorderThickness="1"
-                                    Margin="1,0,1,1" ClipToBounds="True">
-                                <AdornerDecorator>
-                                    <ContentPresenter Margin="{TemplateBinding Padding}" 
-                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
-                                </AdornerDecorator>
-                            </Border>
+                                       VerticalAlignment="Bottom" Cursor="SizeNESW" 
+                                       x:Name="PART_BottomLeftResizer" Visibility="Collapsed"
+                                   Grid.Row="1"/>
                         </Grid>
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="CanResize"  Value="True"/>
-                                <Condition Property="WindowState" Value="Normal"/>
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ResizerContainers" Property="Visibility" Value="Visible"/>
-                        </MultiTrigger>
                         <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="PART_ContentBorder" Property="Margin" Value="0"/>
-                            <Setter TargetName="PART_ContentBorder" Property="BorderThickness" Value="0,1,0,0"/>
+                            <Setter TargetName="PART_TitleMaximizeButton"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_TitleRestoreButton"
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_WindowBorder"
+                                    Property="BorderThickness" Value="0"/>
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Normal">
+                            <Setter TargetName="PART_TitleMaximizeButton"
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_TitleRestoreButton"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_LeftResizer" 
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_TopResizer" 
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_RightResizer" 
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_BottomResizer" 
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_ResizeGrip" 
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_BottomRightResizer" 
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_TopRightResizer" 
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_TopLeftResizer" 
+                                    Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_BottomLeftResizer" 
+                                    Property="Visibility" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

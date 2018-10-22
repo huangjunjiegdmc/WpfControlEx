@@ -9,46 +9,24 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfControlEx.Controls.Native;
 
 namespace WpfControlEx.Controls
 {
     /// <summary>
-    /// 按照步骤 1a 或 1b 操作，然后执行步骤 2 以在 XAML 文件中使用此自定义控件。
-    ///
-    /// 步骤 1a) 在当前项目中存在的 XAML 文件中使用该自定义控件。
-    /// 将此 XmlNamespace 特性添加到要使用该特性的标记文件的根 
-    /// 元素中: 
-    ///
-    ///     xmlns:MyNamespace="clr-namespace:WpfControlEx"
-    ///
-    ///
-    /// 步骤 1b) 在其他项目中存在的 XAML 文件中使用该自定义控件。
-    /// 将此 XmlNamespace 特性添加到要使用该特性的标记文件的根 
-    /// 元素中: 
-    ///
-    ///     xmlns:MyNamespace="clr-namespace:WpfControlEx;assembly=WpfControlEx"
-    ///
-    /// 您还需要添加一个从 XAML 文件所在的项目到此项目的项目引用，
-    /// 并重新生成以避免编译错误: 
-    ///
-    ///     在解决方案资源管理器中右击目标项目，然后依次单击
-    ///     “添加引用”->“项目”->[选择此项目]
-    ///
-    ///
-    /// 步骤 2)
-    /// 继续操作并在 XAML 文件中使用控件。
-    ///
-    ///     <MyNamespace:CustomControl1/>
-    ///
+    /// 自定义普通窗口
     /// </summary>
-    [TemplatePart(Name = HeaderContainerName, Type = typeof(FrameworkElement))]
-    [TemplatePart(Name = MinimizeButtonName, Type = typeof(Button))]
-    [TemplatePart(Name = RestoreButtonName, Type = typeof(ToggleButton))]
-    [TemplatePart(Name = CloseButtonName, Type = typeof(Button))]
+    [TemplatePart(Name = PART_Icon, Type = typeof(UIElement))]
+    [TemplatePart(Name = PART_TitleBar, Type = typeof(UIElement))]
+    [TemplatePart(Name = PART_TitleMinimizeButton, Type = typeof(UIElement))]
+    [TemplatePart(Name = PART_TitleMaximizeButton, Type = typeof(UIElement))]
+    [TemplatePart(Name = PART_TitleRestoreButton, Type = typeof(UIElement))]
+    [TemplatePart(Name = PART_TitleCloseButton, Type = typeof(UIElement))]
     [TemplatePart(Name = TopResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = LeftResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = RightResizerName, Type = typeof(Thumb))]
@@ -59,11 +37,14 @@ namespace WpfControlEx.Controls
     [TemplatePart(Name = BottomLeftResizerName, Type = typeof(Thumb))]
     public class WindowEx : Window
     {
-        #region Template Part Name        
-        private const string HeaderContainerName = "PART_HeaderContainer";
-        private const string MinimizeButtonName = "PART_MinimizeButton";
-        private const string RestoreButtonName = "PART_RestoreButton";
-        private const string CloseButtonName = "PART_CloseButton";
+        #region 常量
+        private const string PART_Icon = "PART_Icon";
+        private const string PART_TitleBar = "PART_TitleBar";
+        private const string PART_TitleMinimizeButton = "PART_TitleMinimizeButton";
+        private const string PART_TitleMaximizeButton = "PART_TitleMaximizeButton";
+        private const string PART_TitleRestoreButton = "PART_TitleRestoreButton";
+        private const string PART_TitleCloseButton = "PART_TitleCloseButton";
+
         private const string TopResizerName = "PART_TopResizer";
         private const string LeftResizerName = "PART_LeftResizer";
         private const string RightResizerName = "PART_RightResizer";
@@ -74,77 +55,56 @@ namespace WpfControlEx.Controls
         private const string BottomLeftResizerName = "PART_BottomLeftResizer";
         #endregion
 
-        #region Dependency Properties
-        
-        public static readonly DependencyProperty ShowDefaultHeaderProperty =
-            DependencyProperty.Register("ShowDefaultHeader", typeof(bool), typeof(WindowEx), new FrameworkPropertyMetadata(true));
-        
-        public static readonly DependencyProperty ShowResizeGripProperty =
-            DependencyProperty.Register("ShowResizeGrip", typeof(bool), typeof(WindowEx), new FrameworkPropertyMetadata(false));
-        
-        public static readonly DependencyProperty CanResizeProperty =
-            DependencyProperty.Register("CanResize", typeof(bool), typeof(WindowEx), new FrameworkPropertyMetadata(true));
-        
-        public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(object), typeof(WindowEx), new FrameworkPropertyMetadata(null, OnHeaderChanged));
-        
-        public static readonly DependencyProperty HeaderTemplateProperty =
-            DependencyProperty.Register("HeaderTemplate", typeof(DataTemplate), typeof(WindowEx), new FrameworkPropertyMetadata(null));
-        
-        public static readonly DependencyProperty HeaderTempateSelectorProperty =
-            DependencyProperty.Register("HeaderTempateSelector", typeof(DataTemplateSelector), typeof(WindowEx), new FrameworkPropertyMetadata(null));
-        
-        public static readonly DependencyProperty IsFullScreenMaximizeProperty =
-            DependencyProperty.Register("IsFullScreenMaximize", typeof(bool), typeof(WindowEx), new FrameworkPropertyMetadata(false));
-        
-        private static void OnHeaderChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+
+
+        #region 变量
+        private Image icon;
+        private Grid titleBar;
+        private Button btnMinimize;
+        private Button btnMaximize;
+        private Button btnRestore;
+        private Button btnClose;
+
+        private Thumb topResizer;
+        private Thumb leftResizer;
+        private Thumb rightResizer;
+        private Thumb bottomResizer;
+        private Thumb bottomRightResizer;
+        private Thumb topRightResizer;
+        private Thumb topLeftResizer;
+        private Thumb bottomLeftResizer;
+        #endregion
+
+
+
+        #region 属性
+        /// <summary>
+        /// 标题栏高度
+        /// </summary>
+        public double TitleBarHeight { get; set; }
+
+        /// <summary>
+        /// 是否显示标题栏
+        /// </summary>
+        public static readonly DependencyProperty TitleBarVisibleProperty
+            = DependencyProperty.Register("TitleBarVisible", typeof(bool), typeof(WindowEx),
+                new PropertyMetadata(true, OnTitleBarVisiblePropertyChangedCallback));
+
+        /// <summary>
+        /// 是否显示标题栏
+        /// </summary>
+        public bool TitleBarVisible
         {
-            WindowEx win = sender as WindowEx;
-            win.RemoveLogicalChild(e.OldValue);
-            win.AddLogicalChild(e.NewValue);
+            get
+            {
+                return (bool)GetValue(TitleBarVisibleProperty);
+            }
+            set
+            {
+                SetValue(TitleBarVisibleProperty, value);
+            }
         }
 
-        public bool ShowDefaultHeader
-        {
-            get { return (bool)GetValue(ShowDefaultHeaderProperty); }
-            set { SetValue(ShowDefaultHeaderProperty, value); }
-        }
-
-        public bool CanResize
-        {
-            get { return (bool)GetValue(CanResizeProperty); }
-            set { SetValue(CanResizeProperty, value); }
-        }
-
-        public bool ShowResizeGrip
-        {
-            get { return (bool)GetValue(ShowResizeGripProperty); }
-            set { SetValue(ShowResizeGripProperty, value); }
-        }
-
-        public object Header
-        {
-            get { return (object)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
-        }
-
-        public DataTemplate HeaderTemplate
-        {
-            get { return (DataTemplate)GetValue(HeaderTemplateProperty); }
-            set { SetValue(HeaderTemplateProperty, value); }
-        }
-
-        public DataTemplateSelector HeaderTempateSelector
-        {
-            get { return (DataTemplateSelector)GetValue(HeaderTempateSelectorProperty); }
-            set { SetValue(HeaderTempateSelectorProperty, value); }
-        }
-
-        public bool IsFullScreenMaximize
-        {
-            get { return (bool)GetValue(IsFullScreenMaximizeProperty); }
-            set { SetValue(IsFullScreenMaximizeProperty, value); }
-        }
         #endregion
 
         static WindowEx()
@@ -152,140 +112,159 @@ namespace WpfControlEx.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(WindowEx), new FrameworkPropertyMetadata(typeof(WindowEx)));
         }
 
-        #region Private Fields
-        private FrameworkElement headerContainer;
+        private static void OnTitleBarVisiblePropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            WindowEx windowEx = d as WindowEx;
 
-        private Button minimizeButton;
+            if (e.NewValue != e.OldValue)
+            {
+                if (!(bool)e.NewValue)
+                {
+                    windowEx.titleBar.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    windowEx.titleBar.Visibility = Visibility.Visible;
+                }
+            }
+        }
 
-        private ToggleButton restoreButton;
-
-        private Button closeButton;
-
-        private Thumb topResizer;
-
-        private Thumb leftResizer;
-
-        private Thumb rightResizer;
-
-        private Thumb bottomResizer;
-
-        private Thumb bottomRightResizer;
-
-        private Thumb topRightResizer;
-
-        private Thumb topLeftResizer;
-
-        private Thumb bottomLeftResizer;
-
-        #endregion
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            headerContainer = GetTemplateChild<FrameworkElement>(HeaderContainerName);
-            headerContainer.MouseLeftButtonDown += HeaderContainerMouseLeftButtonDown;
+            //设置无标题窗口工作区，不遮挡任务栏
+            Rect rect = SystemParameters.WorkArea;
+            MaxWidth = rect.Width;
+            MaxHeight = rect.Height;
 
-            closeButton = GetTemplateChild<Button>(CloseButtonName);
-            closeButton.Click += delegate { Close(); };
+            icon = GetTemplateChild(PART_Icon) as Image;
+            icon.MouseDown += Icon_MouseDown;
 
-            restoreButton = GetTemplateChild<ToggleButton>(RestoreButtonName);
-            restoreButton.Checked += delegate { ChangeWindowState(WindowState.Maximized); };
-            restoreButton.Unchecked += delegate { ChangeWindowState(WindowState.Normal); };
+            titleBar = GetTemplateChild(PART_TitleBar) as Grid;
+            TitleBarHeight = titleBar.Height;
+            titleBar.MouseDown += TitleBar_MouseDown;
+            titleBar.MouseRightButtonUp += TitleBar_MouseRightButtonUp;
+            titleBar.MouseLeftButtonDown += TitleBar_MouseLeftButtonDown;
 
-            StateChanged += new EventHandler(HeaderedWindowStateChanged);
+            btnMinimize = GetTemplateChild(PART_TitleMinimizeButton) as Button;
+            btnMinimize.Click += BtnMinimize_Click;
 
-            minimizeButton = GetTemplateChild<Button>(MinimizeButtonName);
+            btnMaximize = GetTemplateChild(PART_TitleMaximizeButton) as Button;
+            btnMaximize.Click += BtnMaximize_Click;
 
-            minimizeButton.Click += delegate { ChangeWindowState(WindowState.Minimized); };
+            btnRestore = GetTemplateChild(PART_TitleRestoreButton) as Button;
+            btnRestore.Click += BtnRestore_Click;
 
+            btnClose = GetTemplateChild(PART_TitleCloseButton) as Button;
+            btnClose.Click += BtnClose_Click;
 
             topResizer = GetTemplateChild<Thumb>(TopResizerName);
-
             topResizer.DragDelta += new DragDeltaEventHandler(ResizeTop);
 
             leftResizer = GetTemplateChild<Thumb>(LeftResizerName);
-
             leftResizer.DragDelta += new DragDeltaEventHandler(ResizeLeft);
 
             rightResizer = GetTemplateChild<Thumb>(RightResizerName);
-
             rightResizer.DragDelta += new DragDeltaEventHandler(ResizeRight);
 
             bottomResizer = GetTemplateChild<Thumb>(BottomResizerName);
-
             bottomResizer.DragDelta += new DragDeltaEventHandler(ResizeBottom);
 
             bottomRightResizer = GetTemplateChild<Thumb>(BottomRightResizerName);
-
             bottomRightResizer.DragDelta += new DragDeltaEventHandler(ResizeBottomRight);
 
             topRightResizer = GetTemplateChild<Thumb>(TopRightResizerName);
-
             topRightResizer.DragDelta += new DragDeltaEventHandler(ResizeTopRight);
 
             topLeftResizer = GetTemplateChild<Thumb>(TopLeftResizerName);
-
             topLeftResizer.DragDelta += new DragDeltaEventHandler(ResizeTopLeft);
 
             bottomLeftResizer = GetTemplateChild<Thumb>(BottomLeftResizerName);
-
             bottomLeftResizer.DragDelta += new DragDeltaEventHandler(ResizeBottomLeft);
+        }
+
+        /// <summary>
+        /// 窗口图标单击双击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Icon_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                //关闭窗口
+                Close();
+            }
+            else
+            {
+                //弹出系统菜单
+                ShowSystemMenuPhysicalCoordinates(this, PointToScreen(new Point(0, TitleBarHeight)));
+            }
+        }
+
+        private void TitleBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                if (WindowState == WindowState.Maximized)
+                {
+                    WindowState = WindowState.Normal;
+                }
+                else
+                {
+                    WindowState = WindowState.Maximized;
+                }
+            }
+        }
+
+        private void TitleBar_MouseRightButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Point point = PointToScreen(e.GetPosition(sender as Image));
+            ShowSystemMenuPhysicalCoordinates(this, point);
+        }
+
+        private void TitleBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
+            {
+                try
+                {
+                    this.DragMove();
+                }
+                catch { }
+            }
+        }
+
+        /// <summary>
+        /// 最小化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
+        }
+
+        private void BtnRestore_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
         private T GetTemplateChild<T>(string childName) where T : FrameworkElement, new()
         {
             return (GetTemplateChild(childName) as T) ?? new T();
-        }
-
-        private void HeaderContainerMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ClickCount == 1)
-            {
-                DragMove();
-            }
-            else
-            {
-                ChangeWindowState(WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized);
-            }
-        }
-
-        private void ChangeWindowState(WindowState state)
-        {
-            if (state == WindowState.Maximized)
-            {
-                if (!IsFullScreenMaximize && IsLocationOnPrimaryScreen())
-                {
-                    MaxHeight = SystemParameters.WorkArea.Height;
-                    MaxWidth = SystemParameters.WorkArea.Width;
-                }
-                else
-                {
-                    MaxHeight = double.PositiveInfinity;
-                    MaxWidth = double.PositiveInfinity;
-                }
-            }
-
-            WindowState = state;
-        }
-
-
-        private void HeaderedWindowStateChanged(object sender, EventArgs e)
-        {
-            if (WindowState == WindowState.Minimized)
-            {
-                restoreButton.IsChecked = null;
-            }
-            else
-            {
-                restoreButton.IsChecked = WindowState == WindowState.Maximized;
-            }
-
-        }
-
-        private bool IsLocationOnPrimaryScreen()
-        {
-            return Left < SystemParameters.PrimaryScreenWidth && Top < SystemParameters.PrimaryScreenHeight;
         }
 
 
@@ -376,5 +355,23 @@ namespace WpfControlEx.Controls
             Top += e.VerticalChange;
         }
         #endregion
+
+#pragma warning disable 618
+        private static void ShowSystemMenuPhysicalCoordinates(Window window, Point physicalScreenLocation)
+        {
+            if (window == null) return;
+
+            var hwnd = new WindowInteropHelper(window).Handle;
+            if (hwnd == IntPtr.Zero || !Win32Api.IsWindow(hwnd))
+                return;
+
+            var hmenu = Win32Api.GetSystemMenu(hwnd, false);
+
+            var cmd = Win32Api.TrackPopupMenuEx(hmenu, Constants.TPM_LEFTBUTTON | Constants.TPM_RETURNCMD,
+                (int)physicalScreenLocation.X, (int)physicalScreenLocation.Y, hwnd, IntPtr.Zero);
+            if (0 != cmd)
+                Win32Api.PostMessage(hwnd, WM.SYSCOMMAND, new IntPtr(cmd), IntPtr.Zero);
+        }
+#pragma warning restore 618
     }
 }
