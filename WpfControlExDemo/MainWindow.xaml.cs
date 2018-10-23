@@ -30,6 +30,10 @@ namespace WpfControlExDemo
             InitializeComponent();
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ChildWindow childWindow = new ChildWindow();
+            childWindow.ShowDialog();
+        }
     }
 }

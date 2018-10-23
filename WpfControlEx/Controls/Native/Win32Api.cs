@@ -19,6 +19,26 @@ namespace WpfControlEx.Controls.Native
         public static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
 
         /// <summary>
+        /// 删除菜单
+        /// </summary>
+        /// <param name="hMenu"></param>
+        /// <param name="uPosition"></param>
+        /// <param name="uFlags"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll")]
+        public static extern bool DeleteMenu(IntPtr hMenu, uint uPosition, uint uFlags);
+
+        /// <summary>
+        /// 禁用菜单
+        /// </summary>
+        /// <param name="hMenu"></param>
+        /// <param name="uIDEnableItem"></param>
+        /// <param name="uEnable"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll")]
+        public static extern bool EnableMenuItem(IntPtr hMenu, uint uIDEnableItem, uint uEnable);
+
+        /// <summary>
         /// TrackPopupMenuEx
         /// </summary>
         /// <param name="hmenu"></param>

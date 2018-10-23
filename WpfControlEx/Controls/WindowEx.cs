@@ -367,6 +367,32 @@ namespace WpfControlEx.Controls
 
             var hmenu = Win32Api.GetSystemMenu(hwnd, false);
 
+            //禁用启用系统菜单项
+            if (window.WindowState == WindowState.Maximized)
+            {
+                Win32Api.EnableMenuItem(hmenu, Constants.SC_RESTORE,
+                    Constants.MF_BYCOMMAND | Constants.MF_ENABLED);
+
+                Win32Api.EnableMenuItem(hmenu, Constants.SC_SIZE,
+                   Constants.MF_BYCOMMAND | Constants.MF_GRAYED | Constants.MF_DISABLED);
+                Win32Api.EnableMenuItem(hmenu, Constants.SC_MOVE,
+                    Constants.MF_BYCOMMAND | Constants.MF_GRAYED | Constants.MF_DISABLED);
+                Win32Api.EnableMenuItem(hmenu, Constants.SC_MAXIMIZE,
+                    Constants.MF_BYCOMMAND | Constants.MF_GRAYED | Constants.MF_DISABLED);
+            }
+            else
+            {
+                Win32Api.EnableMenuItem(hmenu, Constants.SC_MOVE,
+                    Constants.MF_BYCOMMAND | Constants.MF_ENABLED);
+                Win32Api.EnableMenuItem(hmenu, Constants.SC_MAXIMIZE,
+                    Constants.MF_BYCOMMAND | Constants.MF_ENABLED);
+
+                Win32Api.EnableMenuItem(hmenu, Constants.SC_RESTORE,
+                    Constants.MF_BYCOMMAND | Constants.MF_GRAYED | Constants.MF_DISABLED);
+                Win32Api.EnableMenuItem(hmenu, Constants.SC_SIZE,
+                    Constants.MF_BYCOMMAND | Constants.MF_GRAYED | Constants.MF_DISABLED);
+            }            
+
             var cmd = Win32Api.TrackPopupMenuEx(hmenu, Constants.TPM_LEFTBUTTON | Constants.TPM_RETURNCMD,
                 (int)physicalScreenLocation.X, (int)physicalScreenLocation.Y, hwnd, IntPtr.Zero);
             if (0 != cmd)
