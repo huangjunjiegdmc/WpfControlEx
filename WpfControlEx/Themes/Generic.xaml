@@ -156,7 +156,7 @@
     <Style TargetType="{x:Type controls:WindowEx}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
         <Setter Property="WindowStyle" Value="None"/>
-        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="ResizeMode" Value="CanMinimize"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="Template">
             <Setter.Value>

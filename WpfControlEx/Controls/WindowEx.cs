@@ -58,6 +58,9 @@ namespace WpfControlEx.Controls
 
 
         #region 变量
+        /// <summary>
+        /// 需要在最终使用该窗口的窗口里面设置Icon的源
+        /// </summary>
         private Image icon;
         private Grid titleBar;
         private Button btnMinimize;
@@ -138,7 +141,7 @@ namespace WpfControlEx.Controls
             Rect rect = SystemParameters.WorkArea;
             MaxWidth = rect.Width;
             MaxHeight = rect.Height;
-
+            
             icon = GetTemplateChild(PART_Icon) as Image;
             icon.MouseDown += Icon_MouseDown;
 
