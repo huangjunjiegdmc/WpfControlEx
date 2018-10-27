@@ -31,8 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -51,9 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Controls\Native\Constants.cs" />
-    <Compile Include="Controls\Native\Win32Api.cs" />
-    <Compile Include="Controls\Native\WM.cs" />
+    <Compile Include="Controls\Helper\WindowHelper.cs" />
+    <Compile Include="Controls\Native\MouseHook.cs" />
+    <Compile Include="Controls\Native\WinUserApi.cs" />
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Controls\WindowEx.cs">
       <SubType>Code</SubType>
@@ -82,5 +86,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

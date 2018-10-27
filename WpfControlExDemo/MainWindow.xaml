@@ -10,5 +10,13 @@
                        WindowStartupLocation="CenterScreen"
                        Icon="Images/logo.ico">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Width="100" Content="ChildWindow" Click="Button_Click"></Button>
+        </StackPanel>
     </Grid>
 </wpfcontrolex:WindowEx>

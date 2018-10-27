@@ -277,6 +277,33 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
+                        <!--<Trigger Property="IsModelWindow" Value="true">
+                            <Setter TargetName="PART_TitleMinimizeButton"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_TitleMaximizeButton"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_TitleRestoreButton"
+                                    Property="Visibility" Value="Collapsed"/>
+
+                            <Setter TargetName="PART_LeftResizer"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_TopResizer"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_RightResizer"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_BottomResizer"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_ResizeGrip"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_BottomRightResizer"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_TopRightResizer"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_TopLeftResizer"
+                                    Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_BottomLeftResizer"
+                                    Property="Visibility" Value="Collapsed"/>
+                        </Trigger>-->
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_TitleMaximizeButton"
                                     Property="Visibility" Value="Collapsed"/>

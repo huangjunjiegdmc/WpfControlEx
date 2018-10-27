@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,29 +11,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfControlEx.Controls;
+using WpfControlEx.Controls.Helper;
 
 namespace WpfControlExDemo
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// ChildWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : WindowEx
+    public partial class ChildWindow : WindowEx
     {
-
-        public MainWindow()
+        public ChildWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void WindowEx_Loaded(object sender, RoutedEventArgs e)
         {
-            ChildWindow childWindow = new ChildWindow();
-            childWindow.Owner = this;
-            childWindow.ShowInTaskbar = false;
-            childWindow.ShowDialog();
+            
         }
+
     }
 }
