@@ -39,6 +39,7 @@ namespace WpfControlEx.Controls
     [TemplatePart(Name = TopRightResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = TopLeftResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = BottomLeftResizerName, Type = typeof(Thumb))]
+    [TemplatePart(Name = PART_MaskGrid, Type = typeof(UIElement))]
     public class WindowEx : Window
     {
         #region 常量
@@ -58,6 +59,7 @@ namespace WpfControlEx.Controls
         private const string TopRightResizerName = "PART_TopRightResizer";
         private const string TopLeftResizerName = "PART_TopLeftResizer";
         private const string BottomLeftResizerName = "PART_BottomLeftResizer";
+        private const string PART_MaskGrid = "PART_MaskGrid";
         #endregion
 
 
@@ -82,6 +84,8 @@ namespace WpfControlEx.Controls
         private Thumb topRightResizer;
         private Thumb topLeftResizer;
         private Thumb bottomLeftResizer;
+
+        private Grid maskGrid;
 
         /// <summary>
         /// 全局鼠标钩子
@@ -172,7 +176,51 @@ namespace WpfControlEx.Controls
                 SetValue(TitleBarVisibleProperty, value);
             }
         }
-        
+
+        /// <summary>
+        /// 是否显示蒙板
+        /// </summary>
+        public static readonly DependencyProperty ShowMaskGirdProperty
+            = DependencyProperty.Register("ShowMaskGird", typeof(bool), typeof(WindowEx),
+                new PropertyMetadata(false, OnShowMaskGirdPropertyChangedCallback));
+
+        /// <summary>
+        /// 是否显示蒙板
+        /// </summary>
+        public bool ShowMaskGird
+        {
+            get
+            {
+                return (bool)GetValue(ShowMaskGirdProperty);
+            }
+            set
+            {
+                SetValue(ShowMaskGirdProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// 是否显示蒙板属性修改响应函数
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="e"></param>
+        private static void OnShowMaskGirdPropertyChangedCallback(DependencyObject d,
+           DependencyPropertyChangedEventArgs e)
+        {
+            WindowEx windowEx = d as WindowEx;
+
+            if (e.NewValue != e.OldValue)
+            {
+                if ((bool)e.NewValue)
+                {
+                    windowEx.maskGrid.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    windowEx.maskGrid.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
         #endregion
 
         static WindowEx()
@@ -253,6 +301,8 @@ namespace WpfControlEx.Controls
 
             bottomLeftResizer = GetTemplateChild<Thumb>(BottomLeftResizerName);
             bottomLeftResizer.DragDelta += new DragDeltaEventHandler(ResizeBottomLeft);
+
+            maskGrid = GetTemplateChild<Grid>(PART_MaskGrid);
 
             SetModelWindowProperty();
         }

@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Controls\Helper\WindowHelper.cs" />
+    <Compile Include="Controls\MessageBoxEx.cs" />
+    <Compile Include="Controls\MessageBoxWindow.cs" />
     <Compile Include="Controls\Native\MouseHook.cs" />
     <Compile Include="Controls\Native\WinUserApi.cs" />
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />

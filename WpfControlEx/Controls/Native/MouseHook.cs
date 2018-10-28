@@ -19,10 +19,13 @@ namespace WpfControlEx.Controls.Native
               
 
         /// <summary>
-        /// 鼠标钩子回调函数指针
+        /// 
         /// </summary>
         private int hHook;
 
+        /// <summary>
+        /// 鼠标钩子回调函数指针
+        /// </summary>
         public WinUserApi.HookProc hProc;
         
         /// <summary>
@@ -69,9 +72,16 @@ namespace WpfControlEx.Controls.Native
                         switch ((uint)wParam)
                         {
                             case WinUserApi.WM_LBUTTONDOWN:
-                                MouseButtons button = MouseButtons.Left;
-                                MouseEventArgs MouseClickEventArgs = new MouseEventArgs(button, 1, point.x, point.y, 0);
-                                MouseClickEvent?.Invoke(this, MouseClickEventArgs);
+                                MouseEventArgs LMouseClickEventArgs = new MouseEventArgs(MouseButtons.Left, 1, point.x, point.y, 0);
+                                MouseClickEvent?.Invoke(this, LMouseClickEventArgs);
+                                break;
+                            case WinUserApi.WM_RBUTTONDOWN:
+                                MouseEventArgs RMouseClickEventArgs = new MouseEventArgs(MouseButtons.Right, 1, point.x, point.y, 0);
+                                MouseClickEvent?.Invoke(this, RMouseClickEventArgs);
+                                break;
+                            case WinUserApi.WM_RBUTTONDBLCLK:
+                                MouseEventArgs RBDBLMouseClickEventArgs = new MouseEventArgs(MouseButtons.Right, 2, point.x, point.y, 0);
+                                MouseClickEvent?.Invoke(this, RBDBLMouseClickEventArgs);
                                 break;
                             case WinUserApi.WM_MOUSEMOVE:
                                 MouseEventArgs MouseMoveEventArgs = new MouseEventArgs(MouseButtons.None, 0, point.x, point.y, 0);

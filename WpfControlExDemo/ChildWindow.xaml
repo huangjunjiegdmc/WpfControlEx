@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="ChildWindow" Height="450" Width="800"
                        Loaded="WindowEx_Loaded"
-                       Icon="Images/logo.ico">
+                       Icon="Images/logo.ico"
+                       WindowStartupLocation="CenterOwner">
     <Grid>
         
     </Grid>

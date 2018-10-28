@@ -29,13 +29,24 @@ namespace WpfControlExDemo
         {
             InitializeComponent();
         }
+        
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnChildWindow_Click(object sender, RoutedEventArgs e)
         {
             ChildWindow childWindow = new ChildWindow();
             childWindow.Owner = this;
             childWindow.ShowInTaskbar = false;
             childWindow.ShowDialog();
+        }
+
+        private void btnMessageBoxEx_Click(object sender, RoutedEventArgs e)
+        {
+            string msg = "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
+            msg += "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
+            msg += "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
+            msg += "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
+            msg += "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
+            MessageBoxEx.Show(this, msg, "TestTitle");
         }
     }
 }

@@ -16,7 +16,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
-            <Button Width="100" Content="ChildWindow" Click="Button_Click"></Button>
+            <Button Name="btnChildWindow" Width="100" Content="ChildWindow" Click="btnChildWindow_Click"></Button>
+            <Button Name="btnMessageBoxEx" Width="100" Content="MessageBoxEx" Click="btnMessageBoxEx_Click"></Button>
         </StackPanel>
     </Grid>
 </wpfcontrolex:WindowEx>

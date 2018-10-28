@@ -20,6 +20,46 @@
         <GradientStop Color="#FF47A8EE" Offset="1"/>
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="ButtonNormalBackgroundBlue" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FF108EE9" Offset="0"/>
+        <GradientStop Color="#FF108EE9" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonNormalBackgroundWhite" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="White" Offset="0"/>
+        <GradientStop Color="White" Offset="0.5"/>
+        <GradientStop Color="White" Offset="1"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="ButtonNormalBorder" Color="#BF808080"/>
+
+    <SolidColorBrush x:Key="ButtonNormalBorderLightGray" Color="LightGray"/>
+
+    <LinearGradientBrush x:Key="ButtonMouseOverBlue" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FF47A8EE" Offset="0"/>
+        <GradientStop Color="#FF47A8EE" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonPressedBlue" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FF1286DA" Offset="0"/>
+        <GradientStop Color="#FF1286DA" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonMouseOverLightGray" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="WhiteSmoke" Offset="0"/>
+        <GradientStop Color="WhiteSmoke" Offset="0.5"/>
+        <GradientStop Color="WhiteSmoke" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonPressedLightGray" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FFEBEBEB" Offset="0"/>
+        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+        <GradientStop Color="#FFEBEBEB" Offset="1"/>
+    </LinearGradientBrush>
+    
+
+
+
     <Style x:Key="ButtonMinimize" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
@@ -273,6 +313,10 @@
                                        VerticalAlignment="Bottom" Cursor="SizeNESW" 
                                        x:Name="PART_BottomLeftResizer" Visibility="Collapsed"
                                    Grid.Row="1"/>
+
+                            <!--蒙板-->
+                            <Grid Name="PART_MaskGrid" Background="#7F000000" 
+                                  Visibility="Collapsed" Grid.RowSpan="2"></Grid>
                         </Grid>
                     </Border>
 
@@ -341,6 +385,138 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    
+
+    <Style x:Key="MessageBoxExStyle" TargetType="{x:Type controls:MessageBoxWindow}">
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome CaptionHeight="50" 
+                                    CornerRadius="0" 
+                                    GlassFrameThickness="0"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+        <Setter Property="WindowStyle" Value="None"></Setter>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:MessageBoxWindow}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Border>
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Name="PART_TitleBar" Height="50">
+                                    <Border Margin="20,10,20,10">
+                                        <TextBlock Grid.Column="1" FontSize="18" 
+                                           Foreground="Black" VerticalAlignment="Center" 
+                                                   Text="{TemplateBinding Title}"/>
+                                    </Border>
+                                </Grid>
+
+                                <Grid Grid.Row="1">
+                                    <Border>
+                                        <AdornerDecorator>
+                                            <ContentPresenter/>
+                                        </AdornerDecorator>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonBlue" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonNormalBackgroundBlue}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="1" BorderBrush="{StaticResource ButtonNormalBackgroundBlue}" CornerRadius="2">
+                        <Grid Name="PART_MainGrid" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="10,5,10,5" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Grid Name="PART_FocusRectangle">
+                                <Rectangle Margin="{TemplateBinding Padding}" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="PART_FocusRectangle" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="false">
+                            <Setter TargetName="PART_FocusRectangle" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ButtonMouseOverBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ButtonPressedBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#ADADAD"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonWhite" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonNormalBackgroundWhite}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorderLightGray}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="#FF6E6E6E"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="1" BorderBrush="{StaticResource ButtonNormalBorderLightGray}" CornerRadius="2">
+                        <Grid  Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="10,5,10,5" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Grid Name="PART_FocusRectangle">
+                                <Rectangle Margin="{TemplateBinding Padding}" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="PART_FocusRectangle" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="false">
+                            <Setter TargetName="PART_FocusRectangle" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ButtonMouseOverLightGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ButtonPressedLightGray}"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#ADADAD"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
