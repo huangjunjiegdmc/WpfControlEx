@@ -57,10 +57,6 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="WpfControlEx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WpfControlEx\bin\Debug\WpfControlEx.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -115,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfControlEx\WpfControlEx.csproj">
+      <Project>{4992a228-f10d-4e9c-ae49-dc313908452e}</Project>
+      <Name>WpfControlEx</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

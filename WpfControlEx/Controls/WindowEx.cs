@@ -40,7 +40,7 @@ namespace WpfControlEx.Controls
     [TemplatePart(Name = TopLeftResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = BottomLeftResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = PART_MaskGrid, Type = typeof(UIElement))]
-    public class WindowEx : Window
+    public class WindowEx : MyWindowBase
     {
         #region 常量
         private const string PART_Icon = "PART_Icon";
@@ -116,6 +116,8 @@ namespace WpfControlEx.Controls
         /// </summary>
         public double TitleBarHeight { get; private set; }
 
+        #region IsModelWindow
+
         /// <summary>
         /// 是否模式窗口
         /// </summary>
@@ -137,6 +139,10 @@ namespace WpfControlEx.Controls
                 SetValue(IsModelWindowProperty, value);
             }
         }
+
+        #endregion
+
+        #region TitleBarVisible
 
         /// <summary>
         /// 是否显示标题栏
@@ -177,27 +183,16 @@ namespace WpfControlEx.Controls
             }
         }
 
+        #endregion
+
+        #region ShowMaskGird
+
         /// <summary>
         /// 是否显示蒙板
         /// </summary>
         public static readonly DependencyProperty ShowMaskGirdProperty
             = DependencyProperty.Register("ShowMaskGird", typeof(bool), typeof(WindowEx),
                 new PropertyMetadata(false, OnShowMaskGirdPropertyChangedCallback));
-
-        /// <summary>
-        /// 是否显示蒙板
-        /// </summary>
-        public bool ShowMaskGird
-        {
-            get
-            {
-                return (bool)GetValue(ShowMaskGirdProperty);
-            }
-            set
-            {
-                SetValue(ShowMaskGirdProperty, value);
-            }
-        }
 
         /// <summary>
         /// 是否显示蒙板属性修改响应函数
@@ -221,6 +216,24 @@ namespace WpfControlEx.Controls
                 }
             }
         }
+
+        /// <summary>
+        /// 是否显示蒙板
+        /// </summary>
+        public bool ShowMaskGird
+        {
+            get
+            {
+                return (bool)GetValue(ShowMaskGirdProperty);
+            }
+            set
+            {
+                SetValue(ShowMaskGirdProperty, value);
+            }
+        }
+
+        #endregion
+
         #endregion
 
         static WindowEx()
@@ -243,13 +256,15 @@ namespace WpfControlEx.Controls
             if (m_clickWindowHandle.ToString().Equals(m_parentWindowHandle.ToString()))
             {
                 m_flashWindowAnimation.Begin();
+                this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.ApplicationIdle,
+                    new Action(()=> { this.Activate(); }));
             }
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
+            
             //设置无标题窗口工作区，不遮挡任务栏
             Rect rect = SystemParameters.WorkArea;
             MaxWidth = rect.Width;

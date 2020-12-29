@@ -13,7 +13,7 @@ using WpfControlEx.Controls.Native;
 namespace WpfControlEx.Controls
 {
     [TemplatePart(Name = PART_TitleBar, Type = typeof(UIElement))]
-    public class MessageBoxWindow : Window
+    public class MessageBoxWindow : MyWindowBase
     {
         /// <summary>
         /// 模板路径
@@ -86,6 +86,7 @@ namespace WpfControlEx.Controls
         public MessageBoxResult MessageBoxResult { get; set; }
 
         public MessageBoxButton MessageBoxButton { get; set; }
+
         #endregion
 
 
@@ -219,6 +220,8 @@ namespace WpfControlEx.Controls
             if (m_clickWindowHandle.ToString().Equals(m_parentWindowHandle.ToString()))
             {
                 m_flashWindowAnimation.Begin();
+                this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.ApplicationIdle,
+                   new Action(() => { this.Activate(); }));
             }
         }
 
@@ -363,7 +366,7 @@ namespace WpfControlEx.Controls
                 }
             }
         }
-
+        
         private void Btn_PART_ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult = MessageBoxResult.Cancel;

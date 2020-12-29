@@ -15,10 +15,14 @@
         <GradientStop Color="#FF1890FF" Offset="1"/>
     </LinearGradientBrush>
 
+    <SolidColorBrush x:Key="NonActiveWindowTitleBackground" Color="Gray"/>
+
     <LinearGradientBrush x:Key="WindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
         <GradientStop Color="#FF47A8EE" Offset="0"/>
         <GradientStop Color="#FF47A8EE" Offset="1"/>
     </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="NonActiveWindowNormalBorder" Color="Gray"/>
 
     <LinearGradientBrush x:Key="ButtonNormalBackgroundBlue" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#FF108EE9" Offset="0"/>
@@ -132,7 +136,7 @@
                                 <RectangleGeometry Rect="0 0 1 1"></RectangleGeometry>
                             </Path.Data>
                         </Path>
-                        <Path Stretch="Fill" Fill="{StaticResource WindowTitleBackground}" Stroke="White" StrokeThickness="1" Width="10" Height="10">
+                        <Path Stretch="Fill" Fill="Transparent" Stroke="White" StrokeThickness="1" Width="10" Height="10">
                             <Path.RenderTransform>
                                 <TranslateTransform X="-1" Y="1"></TranslateTransform>
                             </Path.RenderTransform>
@@ -204,7 +208,7 @@
                     <Border Name="PART_WindowBorder" Background="{TemplateBinding Background}"
                             BorderThickness="1"
                             BorderBrush="{StaticResource WindowNormalBorder}">
-                        <Grid SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
+                        <Grid SnapsToDevicePixels="True">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition/>
@@ -225,7 +229,7 @@
                             </Grid.Resources>
 
                             <Grid Name="PART_TitleBar" Height="30">
-                                <Border BorderThickness="0,0,0,0" BorderBrush="LightGray"
+                                <Border Name="PART_WindowTitleBackground" BorderThickness="0,0,0,0"
                                     Background="{StaticResource WindowTitleBackground}">
                                     <Grid >
                                         <Grid.ColumnDefinitions>
@@ -380,6 +384,11 @@
                             <Setter TargetName="PART_BottomLeftResizer" 
                                     Property="Visibility" Value="Visible"/>
                         </Trigger>
+                        <!--  handle active/inactive state  -->
+                        <Trigger Property="IsAppActive" Value="False">
+                            <Setter TargetName="PART_WindowBorder" Property="BorderBrush" Value="{StaticResource NonActiveWindowNormalBorder}" />
+                            <Setter TargetName="PART_WindowTitleBackground" Property="Background" Value="{StaticResource NonActiveWindowTitleBackground}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -400,32 +409,38 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:MessageBoxWindow}">
-                    <Grid Background="{TemplateBinding Background}">
-                        <Border>
-                            <Grid >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                    <Border Name="PART_WindowBorder" Background="{TemplateBinding Background}"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource WindowNormalBorder}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                                <Grid Name="PART_TitleBar" Height="50">
-                                    <Border Margin="20,10,20,10">
-                                        <TextBlock Grid.Column="1" FontSize="18" 
+                            <Grid Name="PART_TitleBar" Height="50">
+                                <Border Margin="20,10,20,10">
+                                    <TextBlock Grid.Column="1" FontSize="18" 
                                            Foreground="Black" VerticalAlignment="Center" 
                                                    Text="{TemplateBinding Title}"/>
-                                    </Border>
-                                </Grid>
-
-                                <Grid Grid.Row="1">
-                                    <Border>
-                                        <AdornerDecorator>
-                                            <ContentPresenter/>
-                                        </AdornerDecorator>
-                                    </Border>
-                                </Grid>
+                                </Border>
                             </Grid>
-                        </Border>
-                    </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Border>
+                                    <AdornerDecorator>
+                                        <ContentPresenter/>
+                                    </AdornerDecorator>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!--  handle active/inactive state  -->
+                        <Trigger Property="IsAppActive" Value="False">
+                            <Setter TargetName="PART_WindowBorder" Property="BorderBrush" Value="{StaticResource NonActiveWindowNormalBorder}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
