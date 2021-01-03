@@ -15,14 +15,23 @@
         <GradientStop Color="#FF1890FF" Offset="1"/>
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="NonActiveWindowTitleBackground" Color="Gray"/>
+    <LinearGradientBrush x:Key="NonActiveWindowTitleBackground"
+                         StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#BF1890FF" Offset="0"/>
+        <GradientStop Color="#BF1890FF" Offset="0.5"/>
+        <GradientStop Color="#BF1890FF" Offset="0.5"/>
+        <GradientStop Color="#BF1890FF" Offset="1"/>
+    </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="WindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
         <GradientStop Color="#FF47A8EE" Offset="0"/>
         <GradientStop Color="#FF47A8EE" Offset="1"/>
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="NonActiveWindowNormalBorder" Color="Gray"/>
+    <LinearGradientBrush x:Key="NonActiveWindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
+        <GradientStop Color="#BF47A8EE" Offset="0"/>
+        <GradientStop Color="#BF47A8EE" Offset="1"/>
+    </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="ButtonNormalBackgroundBlue" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#FF108EE9" Offset="0"/>
@@ -252,19 +261,19 @@
                                                    VerticalAlignment="Center" 
                                                    Margin="5,0,0,0"/>
                                         <Button Grid.Column="2" Name="PART_TitleMinimizeButton"
-                                                Width="40" Height="30"  ToolTip="最小化"
+                                                Width="40" Height="30"  ToolTip="{TemplateBinding MinimizeButtonTooltip}"
                                                 Style="{StaticResource ButtonMinimize}" 
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
                                         <Button Grid.Column="3" Name="PART_TitleMaximizeButton"
-                                                Width="40" Height="30"  ToolTip="最大化"
+                                                Width="40" Height="30"  ToolTip="{TemplateBinding MaximizeButtonTooltip}"
                                                 Style="{StaticResource ButtonMaximize}"
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
                                         <Button Grid.Column="4" Name="PART_TitleRestoreButton"
-                                                Width="40" Height="30"  ToolTip="向下还原"
+                                                Width="40" Height="30"  ToolTip="{TemplateBinding RestoreButtonTooltip}"
                                                 Style="{StaticResource ButtonRestore}"
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
                                         <Button Grid.Column="5" Name="PART_TitleCloseButton" 
-                                                Width="40" Height="30"  ToolTip="关闭"
+                                                Width="40" Height="30"  ToolTip="{TemplateBinding CloseButtonTooltip}"
                                                 Style="{StaticResource ButtonClose}"
                                                 HorizontalAlignment="Right" 
                                                 Margin="0,0,5,0" VerticalAlignment="Top" >

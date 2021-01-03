@@ -54,6 +54,11 @@ namespace WpfControlEx.Controls.Native
         /// 按命令方式
         /// </summary>
         public const uint MF_BYCOMMAND = 0x00;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint MF_BYPOSITION = (uint)0x00000400L;
         /// <summary>
         /// 启用
         /// </summary>
@@ -115,6 +120,12 @@ namespace WpfControlEx.Controls.Native
         /// <returns></returns>
         [DllImport("user32.dll")]
         public static extern bool EnableMenuItem(IntPtr hMenu, uint uIDEnableItem, uint uEnable);
+
+        [DllImport("user32.dll")]
+        public static extern bool ModifyMenu(IntPtr hMnu, uint uPosition, uint uFlags, uint uIDNewItem, string lpNewItem);
+
+        [DllImport("user32.dll")]
+        public static extern int GetMenuItemID(IntPtr hMenu, int nPos);
 
         /// <summary>
         /// TrackPopupMenuEx

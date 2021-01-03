@@ -7,8 +7,9 @@
                        xmlns:wpfcontrolex="clr-namespace:WpfControlEx.Controls;assembly=WpfControlEx"
                        mc:Ignorable="d"
                        Title="MainWindow" Height="450" Width="800"
-                       WindowStartupLocation="CenterScreen"
+                       WindowStartupLocation="CenterScreen" CloseButtonTooltip="{StaticResource CloseButton}" RestoreMenuContent="{StaticResource RestoreMenu}"
                        Icon="Images/logo.ico">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

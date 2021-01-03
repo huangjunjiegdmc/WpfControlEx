@@ -234,6 +234,266 @@ namespace WpfControlEx.Controls
 
         #endregion
 
+        #region MinimizeButtonTooltip
+
+        /// <summary>
+        /// 最小化
+        /// </summary>
+        public static readonly DependencyProperty MinimizeButtonTooltipProperty
+            = DependencyProperty.Register("MinimizeButtonTooltip", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Minimize"));
+
+        /// <summary>
+        /// 最小化
+        /// </summary>
+        public string MinimizeButtonTooltip
+        {
+            get
+            {
+                return (string)GetValue(MinimizeButtonTooltipProperty);
+            }
+            set
+            {
+                SetValue(MinimizeButtonTooltipProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region MaximizeButtonTooltip
+
+        /// <summary>
+        /// 最大化
+        /// </summary>
+        public static readonly DependencyProperty MaximizeButtonTooltipProperty
+            = DependencyProperty.Register("MaximizeButtonTooltip", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Maximize"));
+
+        /// <summary>
+        /// 最大化
+        /// </summary>
+        public string MaximizeButtonTooltip
+        {
+            get
+            {
+                return (string)GetValue(MaximizeButtonTooltipProperty);
+            }
+            set
+            {
+                SetValue(MaximizeButtonTooltipProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region RestoreButtonTooltip
+
+        /// <summary>
+        /// 还原
+        /// </summary>
+        public static readonly DependencyProperty RestoreButtonTooltipProperty
+            = DependencyProperty.Register("RestoreButtonTooltip", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Restore"));
+
+        /// <summary>
+        /// 还原
+        /// </summary>
+        public string RestoreButtonTooltip
+        {
+            get
+            {
+                return (string)GetValue(RestoreButtonTooltipProperty);
+            }
+            set
+            {
+                SetValue(RestoreButtonTooltipProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region CloseButtonTooltip
+
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonTooltipProperty
+            = DependencyProperty.Register("CloseButtonTooltip", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Close"));
+
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        public string CloseButtonTooltip
+        {
+            get
+            {
+                return (string)GetValue(CloseButtonTooltipProperty);
+            }
+            set
+            {
+                SetValue(CloseButtonTooltipProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region RestoreMenuContent
+
+        /// <summary>
+        /// 还原(R)
+        /// </summary>
+        public static readonly DependencyProperty RestoreMenuContentProperty
+            = DependencyProperty.Register("RestoreMenuContent", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Restore(&R)"));
+
+        /// <summary>
+        /// 还原(R)
+        /// </summary>
+        public string RestoreMenuContent
+        {
+            get
+            {
+                return (string)GetValue(RestoreMenuContentProperty);
+            }
+            set
+            {
+                SetValue(RestoreMenuContentProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region MoveMenuContent
+
+        /// <summary>
+        /// 移动(M)
+        /// </summary>
+        public static readonly DependencyProperty MoveMenuContentProperty
+            = DependencyProperty.Register("MoveMenuContent", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Move(&M)"));
+
+        /// <summary>
+        /// 移动(M)
+        /// </summary>
+        public string MoveMenuContent
+        {
+            get
+            {
+                return (string)GetValue(MoveMenuContentProperty);
+            }
+            set
+            {
+                SetValue(MoveMenuContentProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region SizeMenuContent
+
+        /// <summary>
+        /// 大小(S)
+        /// </summary>
+        public static readonly DependencyProperty SizeMenuContentProperty
+            = DependencyProperty.Register("SizeMenuContent", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Size(&S)"));
+
+        /// <summary>
+        /// 大小(S)
+        /// </summary>
+        public string SizeMenuContent
+        {
+            get
+            {
+                return (string)GetValue(SizeMenuContentProperty);
+            }
+            set
+            {
+                SetValue(SizeMenuContentProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region MinimizeMenuContent
+
+        /// <summary>
+        /// 最小化(N)
+        /// </summary>
+        public static readonly DependencyProperty MinimizeMenuContentProperty
+            = DependencyProperty.Register("MinimizeMenuContent", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Minimize(&N)"));
+
+        /// <summary>
+        /// 最小化(N)
+        /// </summary>
+        public string MinimizeMenuContent
+        {
+            get
+            {
+                return (string)GetValue(MinimizeMenuContentProperty);
+            }
+            set
+            {
+                SetValue(MinimizeMenuContentProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region MaximizeMenuContent
+
+        /// <summary>
+        /// 最大化(X)
+        /// </summary>
+        public static readonly DependencyProperty MaximizeMenuContentProperty
+            = DependencyProperty.Register("MaximizeMenuContent", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Maximize(&X)"));
+
+        /// <summary>
+        /// 最大化(X)
+        /// </summary>
+        public string MaximizeMenuContent
+        {
+            get
+            {
+                return (string)GetValue(MaximizeMenuContentProperty);
+            }
+            set
+            {
+                SetValue(MaximizeMenuContentProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region CloseMenuContent
+
+        /// <summary>
+        /// 关闭(C)
+        /// </summary>
+        public static readonly DependencyProperty CloseMenuContentProperty
+            = DependencyProperty.Register("CloseMenuContent", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Close(&C)"));
+
+        /// <summary>
+        /// 关闭(C)
+        /// </summary>
+        public string CloseMenuContent
+        {
+            get
+            {
+                return (string)GetValue(CloseMenuContentProperty);
+            }
+            set
+            {
+                SetValue(CloseMenuContentProperty, value);
+            }
+        }
+
+        #endregion
+
         #endregion
 
         static WindowEx()
@@ -563,48 +823,82 @@ namespace WpfControlEx.Controls
             var hmenu = WinUserApi.GetSystemMenu(hwnd, false);
 
             //禁用启用系统菜单项
-            if (window.WindowState == WindowState.Maximized)
+            if (IsModelWindow)
             {
-                WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_RESTORE,
+                //模式窗口只保留移动和关闭菜单
+                WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_MOVE,
                     WinUserApi.MF_BYCOMMAND | WinUserApi.MF_ENABLED);
 
-                WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_SIZE,
-                   WinUserApi.MF_BYCOMMAND | WinUserApi.MF_GRAYED | WinUserApi.MF_DISABLED);
-                WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_MOVE,
-                    WinUserApi.MF_BYCOMMAND | WinUserApi.MF_GRAYED | WinUserApi.MF_DISABLED);
-                WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_MAXIMIZE,
-                    WinUserApi.MF_BYCOMMAND | WinUserApi.MF_GRAYED | WinUserApi.MF_DISABLED);
+                WinUserApi.DeleteMenu(hmenu, WinUserApi.SC_RESTORE,
+                    WinUserApi.MF_BYCOMMAND);
+                WinUserApi.DeleteMenu(hmenu, WinUserApi.SC_SIZE,
+                    WinUserApi.MF_BYCOMMAND);
+                WinUserApi.DeleteMenu(hmenu, WinUserApi.SC_MINIMIZE,
+                    WinUserApi.MF_BYCOMMAND);
+                WinUserApi.DeleteMenu(hmenu, WinUserApi.SC_MAXIMIZE,
+                    WinUserApi.MF_BYCOMMAND);
+
+                #region 修改菜单名称，支持国际化
+
+                int pos = 0;  //菜单项目的位置
+                int menuid = WinUserApi.GetMenuItemID(hmenu, pos);//菜单ID
+                WinUserApi.ModifyMenu(hmenu, (uint)pos, WinUserApi.MF_BYPOSITION, (uint)menuid, MoveMenuContent);
+                pos++;
+                pos++;
+                menuid = WinUserApi.GetMenuItemID(hmenu, pos);
+                WinUserApi.ModifyMenu(hmenu, (uint)pos, WinUserApi.MF_BYPOSITION, (uint)menuid, CloseMenuContent);
+
+                #endregion
             }
             else
             {
-                if (IsModelWindow)
+                #region 修改菜单名称，支持国际化
+
+                int pos = 0;  //菜单项目的位置
+                int menuid = WinUserApi.GetMenuItemID(hmenu, pos);//菜单ID
+                WinUserApi.ModifyMenu(hmenu, (uint)pos, WinUserApi.MF_BYPOSITION, (uint)menuid, RestoreMenuContent);
+                pos++;
+                menuid = WinUserApi.GetMenuItemID(hmenu, pos);
+                WinUserApi.ModifyMenu(hmenu, (uint)pos, WinUserApi.MF_BYPOSITION, (uint)menuid, MoveMenuContent);
+                pos++;
+                menuid = WinUserApi.GetMenuItemID(hmenu, pos);
+                WinUserApi.ModifyMenu(hmenu, (uint)pos, WinUserApi.MF_BYPOSITION, (uint)menuid, SizeMenuContent);
+                pos++;
+                menuid = WinUserApi.GetMenuItemID(hmenu, pos);
+                WinUserApi.ModifyMenu(hmenu, (uint)pos, WinUserApi.MF_BYPOSITION, (uint)menuid, MinimizeMenuContent);
+                pos++;
+                menuid = WinUserApi.GetMenuItemID(hmenu, pos);
+                WinUserApi.ModifyMenu(hmenu, (uint)pos, WinUserApi.MF_BYPOSITION, (uint)menuid, MaximizeMenuContent);
+                pos++;
+                pos++;
+                menuid = WinUserApi.GetMenuItemID(hmenu, pos);
+                WinUserApi.ModifyMenu(hmenu, (uint)pos, WinUserApi.MF_BYPOSITION, (uint)menuid, CloseMenuContent);
+
+                #endregion
+
+                if (window.WindowState == WindowState.Maximized)
                 {
-                    //模式窗口只保留移动和关闭菜单
-                    WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_MOVE,
+                    WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_RESTORE,
                         WinUserApi.MF_BYCOMMAND | WinUserApi.MF_ENABLED);
 
-                    WinUserApi.DeleteMenu(hmenu, WinUserApi.SC_RESTORE,
-                        WinUserApi.MF_BYCOMMAND);
-                    WinUserApi.DeleteMenu(hmenu, WinUserApi.SC_SIZE,
-                        WinUserApi.MF_BYCOMMAND);
-                    WinUserApi.DeleteMenu(hmenu, WinUserApi.SC_MINIMIZE,
-                        WinUserApi.MF_BYCOMMAND);
-                    WinUserApi.DeleteMenu(hmenu, WinUserApi.SC_MAXIMIZE,
-                        WinUserApi.MF_BYCOMMAND);
+                    WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_SIZE,
+                       WinUserApi.MF_BYCOMMAND | WinUserApi.MF_GRAYED | WinUserApi.MF_DISABLED);
+                    WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_MOVE,
+                        WinUserApi.MF_BYCOMMAND | WinUserApi.MF_GRAYED | WinUserApi.MF_DISABLED);
+                    WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_MAXIMIZE,
+                        WinUserApi.MF_BYCOMMAND | WinUserApi.MF_GRAYED | WinUserApi.MF_DISABLED);
                 }
                 else
                 {
                     WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_MOVE,
-                                        WinUserApi.MF_BYCOMMAND | WinUserApi.MF_ENABLED);
+                        WinUserApi.MF_BYCOMMAND | WinUserApi.MF_ENABLED);
                     WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_MAXIMIZE,
                         WinUserApi.MF_BYCOMMAND | WinUserApi.MF_ENABLED);
 
                     WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_RESTORE,
                         WinUserApi.MF_BYCOMMAND | WinUserApi.MF_GRAYED | WinUserApi.MF_DISABLED);
-                    WinUserApi.EnableMenuItem(hmenu, WinUserApi.SC_SIZE,
-                        WinUserApi.MF_BYCOMMAND | WinUserApi.MF_GRAYED | WinUserApi.MF_DISABLED);
-                }                
-            }            
+                }
+            }
 
             var cmd = WinUserApi.TrackPopupMenuEx(hmenu, WinUserApi.TPM_LEFTBUTTON | WinUserApi.TPM_RETURNCMD,
                 (int)physicalScreenLocation.X, (int)physicalScreenLocation.Y, hwnd, IntPtr.Zero);
