@@ -31,123 +31,126 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:WindowEx}">
-                    <Border Name="PART_WindowBorder" Background="{TemplateBinding Background}"
-                            BorderThickness="1"
+                    <!--最外层的Border Background="White"保证窗口inactive时，PART_WindowBorder和PART_WindowTitleBackground一样效果-->
+                    <Border Background="White">
+                        <Border Name="PART_WindowBorder" Background="{TemplateBinding Background}"
+                            BorderThickness="3"
                             BorderBrush="{StaticResource WindowNormalBorder}">
-                        <Grid SnapsToDevicePixels="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                            <Grid SnapsToDevicePixels="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                            <Grid.Resources>
-                                <sys:Double x:Key="StraightResizerSize">3</sys:Double>
-                                <sys:Double x:Key="SlantResizerSize">8</sys:Double>
-                                <Style TargetType="{x:Type Thumb}">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate>
-                                                <Rectangle Fill="Transparent"/>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </Grid.Resources>
+                                <Grid.Resources>
+                                    <sys:Double x:Key="StraightResizerSize">3</sys:Double>
+                                    <sys:Double x:Key="SlantResizerSize">8</sys:Double>
+                                    <Style TargetType="{x:Type Thumb}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Rectangle Fill="Transparent"/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Grid.Resources>
 
-                            <Grid Name="PART_TitleBar" Height="30">
-                                <Border Name="PART_WindowTitleBackground" BorderThickness="0,0,0,0"
+                                <Grid Name="PART_TitleBar" Height="30">
+                                    <Border Name="PART_WindowTitleBackground" BorderThickness="0,0,0,0"
                                     Background="{StaticResource WindowTitleBackground}">
-                                    <Grid >
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
+                                        <Grid >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
 
-                                        <Image x:Name="PART_Icon" 
+                                            <Image x:Name="PART_Icon" 
                                                Source="{TemplateBinding Icon}"
                                                Width="20" Height="20" 
                                                Margin="5,0,0,0" 
                                                VerticalAlignment="Center"></Image>
-                                        <TextBlock Grid.Column="1" FontSize="14" 
+                                            <TextBlock Grid.Column="1" FontSize="14" 
                                                    Text="{TemplateBinding Title}"
                                                    Foreground="White"
                                                    VerticalAlignment="Center" 
                                                    Margin="5,0,0,0"/>
-                                        <Button Grid.Column="2" Name="PART_TitleMinimizeButton"
+                                            <Button Grid.Column="2" Name="PART_TitleMinimizeButton"
                                                 Width="40" Height="30"  ToolTip="{TemplateBinding MinimizeButtonTips}"
                                                 Style="{StaticResource ButtonMinimize}" 
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
-                                        <Button Grid.Column="3" Name="PART_TitleMaximizeButton"
+                                            <Button Grid.Column="3" Name="PART_TitleMaximizeButton"
                                                 Width="40" Height="30"  ToolTip="{TemplateBinding MaximizeButtonTips}"
                                                 Style="{StaticResource ButtonMaximize}"
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
-                                        <Button Grid.Column="4" Name="PART_TitleRestoreButton"
+                                            <Button Grid.Column="4" Name="PART_TitleRestoreButton"
                                                 Width="40" Height="30"  ToolTip="{TemplateBinding RestoreButtonTips}"
                                                 Style="{StaticResource ButtonRestore}"
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
-                                        <Button Grid.Column="5" Name="PART_TitleCloseButton" 
+                                            <Button Grid.Column="5" Name="PART_TitleCloseButton" 
                                                 Width="40" Height="30"  ToolTip="{TemplateBinding CloseButtonTips}"
                                                 Style="{StaticResource ButtonClose}"
                                                 HorizontalAlignment="Right" 
                                                 Margin="0,0,5,0" VerticalAlignment="Top" >
-                                        </Button>
-                                    </Grid>
-                                </Border>
-                            </Grid>
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                            <Grid Grid.Row="1">
-                                <AdornerDecorator>
-                                    <ContentPresenter />
-                                </AdornerDecorator>
-                            </Grid>
+                                <Grid Grid.Row="1">
+                                    <AdornerDecorator>
+                                        <ContentPresenter />
+                                    </AdornerDecorator>
+                                </Grid>
 
-                            <Thumb Width="{StaticResource StraightResizerSize}"
+                                <Thumb Width="{StaticResource StraightResizerSize}"
                                        VerticalAlignment="Stretch" HorizontalAlignment="Left" Cursor="SizeWE" 
                                        x:Name="PART_LeftResizer" Visibility="Collapsed"
                                    Grid.RowSpan="2"/>
-                            <Thumb Height="{StaticResource StraightResizerSize}" 
+                                <Thumb Height="{StaticResource StraightResizerSize}" 
                                        VerticalAlignment="Top" HorizontalAlignment="Stretch" Cursor="SizeNS"
                                        x:Name="PART_TopResizer" Visibility="Collapsed"/>
-                            <Thumb Width="{StaticResource StraightResizerSize}" 
+                                <Thumb Width="{StaticResource StraightResizerSize}" 
                                        VerticalAlignment="Stretch" HorizontalAlignment="Right" Cursor="SizeWE" 
                                        x:Name="PART_RightResizer" Visibility="Collapsed"
                                    Grid.RowSpan="2"/>
-                            <Thumb Height="{StaticResource StraightResizerSize}"
+                                <Thumb Height="{StaticResource StraightResizerSize}"
                                        VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Cursor="SizeNS"
                                        x:Name="PART_BottomResizer" Visibility="Collapsed"
                                    Grid.Row="1"/>
-                            <ResizeGrip Width="{StaticResource SlantResizerSize}" 
+                                <ResizeGrip Width="{StaticResource SlantResizerSize}" 
                                             Height="{StaticResource SlantResizerSize}" HorizontalAlignment="Right" 
                                             VerticalAlignment="Bottom"
                                             x:Name="PART_ResizeGrip" Visibility="Collapsed"
                                         Grid.Row="1"/>
-                            <Thumb Width="{StaticResource SlantResizerSize}" 
+                                <Thumb Width="{StaticResource SlantResizerSize}" 
                                        Height="{StaticResource SlantResizerSize}" 
                                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" 
                                        x:Name="PART_BottomRightResizer" Visibility="Collapsed"
                                    Grid.Row="1"/>
-                            <Thumb Width="{StaticResource SlantResizerSize}"
+                                <Thumb Width="{StaticResource SlantResizerSize}"
                                        Height="{StaticResource SlantResizerSize}"
                                        HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="SizeNESW" 
                                        x:Name="PART_TopRightResizer" Visibility="Collapsed"/>
-                            <Thumb Width="{StaticResource SlantResizerSize}"
+                                <Thumb Width="{StaticResource SlantResizerSize}"
                                        Height="{StaticResource SlantResizerSize}" HorizontalAlignment="Left" 
                                        VerticalAlignment="Top" Cursor="SizeNWSE" 
                                        x:Name="PART_TopLeftResizer" Visibility="Collapsed"/>
-                            <Thumb Width="{StaticResource SlantResizerSize}"
+                                <Thumb Width="{StaticResource SlantResizerSize}"
                                        Height="{StaticResource SlantResizerSize}" HorizontalAlignment="Left" 
                                        VerticalAlignment="Bottom" Cursor="SizeNESW" 
                                        x:Name="PART_BottomLeftResizer" Visibility="Collapsed"
                                    Grid.Row="1"/>
 
-                            <!--蒙板-->
-                            <Grid Name="PART_MaskGrid" Background="#7F000000" 
+                                <!--蒙板-->
+                                <Grid Name="PART_MaskGrid" Background="#7F000000" 
                                   Visibility="Collapsed" Grid.RowSpan="2"></Grid>
-                        </Grid>
+                            </Grid>
+                        </Border>
                     </Border>
 
                     <ControlTemplate.Triggers>

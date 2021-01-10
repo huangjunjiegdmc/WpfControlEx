@@ -17,14 +17,18 @@
         <GradientStop Color="#BF1890FF" Offset="1"/>
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="WindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
-        <GradientStop Color="#FF47A8EE" Offset="0"/>
-        <GradientStop Color="#FF47A8EE" Offset="1"/>
+    <LinearGradientBrush x:Key="WindowNormalBorder" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF1890FF" Offset="0"/>
+        <GradientStop Color="#FF1890FF" Offset="0.5"/>
+        <GradientStop Color="#FF1890FF" Offset="0.5"/>
+        <GradientStop Color="#FF1890FF" Offset="1"/>
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="NonActiveWindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
-        <GradientStop Color="#BF47A8EE" Offset="0"/>
-        <GradientStop Color="#BF47A8EE" Offset="1"/>
+    <LinearGradientBrush x:Key="NonActiveWindowNormalBorder" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#BF1890FF" Offset="0"/>
+        <GradientStop Color="#BF1890FF" Offset="0.5"/>
+        <GradientStop Color="#BF1890FF" Offset="0.5"/>
+        <GradientStop Color="#BF1890FF" Offset="1"/>
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="ButtonNormalBackgroundBlue" EndPoint="0,1" StartPoint="0,0">
