@@ -19,7 +19,7 @@ namespace WpfControlExDemo
             base.OnStartup(e);
 
             //this.SetLanguage(Constants.LANG_ZH_HANS);
-            this.ApplyTheme("LightBlue");
+            //this.ApplyTheme("LightBlue");
         }
     }
 }
