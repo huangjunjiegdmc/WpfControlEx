@@ -54,10 +54,10 @@ namespace WpfControlEx.Utils
                         app.Resources.MergedDictionaries.Remove(oldRd);
                     }
 
-                    languagePath = String.Format(@"pack://application:,,,/WpfControlEx;component/Localizations/Language_{0}.xaml", language);
+                    languagePath = String.Format(@"/WpfControlEx;component/Localizations/Language_{0}.xaml", language);
                     var newRd = new ResourceDictionary()
                     {
-                        Source = new Uri(languagePath, UriKind.Absolute)
+                        Source = new Uri(languagePath, UriKind.Relative)
                     };
                     if (newRd == null)
                     {

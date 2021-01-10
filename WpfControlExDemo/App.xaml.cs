@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using WpfControlEx.Utils;
+using WpfControlEx.Themes;
 
 namespace WpfControlExDemo
 {
@@ -19,6 +19,7 @@ namespace WpfControlExDemo
             base.OnStartup(e);
 
             //this.SetLanguage(Constants.LANG_ZH_HANS);
+            this.ApplyTheme("LightBlue");
         }
     }
 }

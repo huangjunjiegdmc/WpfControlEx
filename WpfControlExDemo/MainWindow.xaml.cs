@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfControlEx.Controls;
+using WpfControlEx.Themes;
 using WpfControlEx.Utils;
 
 namespace WpfControlExDemo
@@ -54,6 +55,16 @@ namespace WpfControlExDemo
         {
             WpfControlEx.Utils.LanguageHelper.PriorityLangSource = WpfControlEx.Utils.LanguageSource.External;
             Application.Current.SetLanguage(Constants.LANG_ZH_HANT);
+        }
+
+        private void btnTheme_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.ApplyTheme("LightGreen");
+        }
+
+        private void btnBlue_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.ApplyTheme("LightBlue");
         }
     }
 }
