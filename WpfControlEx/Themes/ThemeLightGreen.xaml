@@ -3,32 +3,32 @@
 
     <LinearGradientBrush x:Key="WindowTitleBackground"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#FF53EA6E" Offset="0"/>
-        <GradientStop Color="#FF53EA6E" Offset="0.5"/>
-        <GradientStop Color="#FF53EA6E" Offset="0.5"/>
-        <GradientStop Color="#FF53EA6E" Offset="1"/>
+        <GradientStop Color="#FF42A04F" Offset="0"/>
+        <GradientStop Color="#FF42A04F" Offset="0.5"/>
+        <GradientStop Color="#FF42A04F" Offset="0.5"/>
+        <GradientStop Color="#FF42A04F" Offset="1"/>
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="NonActiveWindowTitleBackground"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#BF53EA6E" Offset="0"/>
-        <GradientStop Color="#BF53EA6E" Offset="0.5"/>
-        <GradientStop Color="#BF53EA6E" Offset="0.5"/>
-        <GradientStop Color="#BF53EA6E" Offset="1"/>
+        <GradientStop Color="#BF42A04F" Offset="0"/>
+        <GradientStop Color="#BF42A04F" Offset="0.5"/>
+        <GradientStop Color="#BF42A04F" Offset="0.5"/>
+        <GradientStop Color="#BF42A04F" Offset="1"/>
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="WindowNormalBorder" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#FF53EA6E" Offset="0"/>
-        <GradientStop Color="#FF53EA6E" Offset="0.5"/>
-        <GradientStop Color="#FF53EA6E" Offset="0.5"/>
-        <GradientStop Color="#FF53EA6E" Offset="1"/>
+        <GradientStop Color="#FF42A04F" Offset="0"/>
+        <GradientStop Color="#FF42A04F" Offset="0.5"/>
+        <GradientStop Color="#FF42A04F" Offset="0.5"/>
+        <GradientStop Color="#FF42A04F" Offset="1"/>
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="NonActiveWindowNormalBorder" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#BF53EA6E" Offset="0"/>
-        <GradientStop Color="#BF53EA6E" Offset="0.5"/>
-        <GradientStop Color="#BF53EA6E" Offset="0.5"/>
-        <GradientStop Color="#BF53EA6E" Offset="1"/>
+        <GradientStop Color="#BF42A04F" Offset="0"/>
+        <GradientStop Color="#BF42A04F" Offset="0.5"/>
+        <GradientStop Color="#BF42A04F" Offset="0.5"/>
+        <GradientStop Color="#BF42A04F" Offset="1"/>
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="ButtonNormalBackgroundBlue" EndPoint="0,1" StartPoint="0,0">

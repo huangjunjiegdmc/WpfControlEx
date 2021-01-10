@@ -35,7 +35,7 @@
                     <Border Background="White">
                         <Grid>
                             <Border Name="PART_WindowBorder" Background="{TemplateBinding Background}"
-                            BorderThickness="3"
+                            BorderThickness="3,0,3,3"
                             BorderBrush="{DynamicResource WindowNormalBorder}">
                                 <Grid SnapsToDevicePixels="True">
                                     <Grid.RowDefinitions>
