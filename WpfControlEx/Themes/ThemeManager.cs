@@ -75,7 +75,7 @@ namespace WpfControlEx.Themes
         }
 
         /// <summary>
-        /// 应用主题
+        /// 应用控件主题
         /// </summary>
         /// <param name="app">应用程序</param>
         /// <param name="theme">主题名称</param>
@@ -105,6 +105,11 @@ namespace WpfControlEx.Themes
             catch { }
         }
 
+        /// <summary>
+        /// 应用全局主题
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="themeName"></param>
         public static void ApplyTheme(this Application app, string themeName)
         {
             try

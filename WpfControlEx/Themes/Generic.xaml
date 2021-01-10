@@ -28,6 +28,8 @@
         <Setter Property="MaximizeButtonTips" Value="{DynamicResource Maximize}"/>
         <Setter Property="RestoreButtonTips" Value="{DynamicResource Restore}"/>
         <Setter Property="CloseButtonTips" Value="{DynamicResource Close}"/>
+        <Setter Property="MinHeight" Value="200"/>
+        <Setter Property="MinWidth" Value="300"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:WindowEx}">
