@@ -7,73 +7,10 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/WpfControlEx;component/Localizations/Language_en.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WpfControlEx;component/Themes/LightBlue.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-
-    <LinearGradientBrush x:Key="WindowTitleBackground"
-                         StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#FF1890FF" Offset="0"/>
-        <GradientStop Color="#FF1890FF" Offset="0.5"/>
-        <GradientStop Color="#FF1890FF" Offset="0.5"/>
-        <GradientStop Color="#FF1890FF" Offset="1"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="NonActiveWindowTitleBackground"
-                         StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#BF1890FF" Offset="0"/>
-        <GradientStop Color="#BF1890FF" Offset="0.5"/>
-        <GradientStop Color="#BF1890FF" Offset="0.5"/>
-        <GradientStop Color="#BF1890FF" Offset="1"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="WindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
-        <GradientStop Color="#FF47A8EE" Offset="0"/>
-        <GradientStop Color="#FF47A8EE" Offset="1"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="NonActiveWindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
-        <GradientStop Color="#BF47A8EE" Offset="0"/>
-        <GradientStop Color="#BF47A8EE" Offset="1"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ButtonNormalBackgroundBlue" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FF108EE9" Offset="0"/>
-        <GradientStop Color="#FF108EE9" Offset="1"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ButtonNormalBackgroundWhite" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="White" Offset="0"/>
-        <GradientStop Color="White" Offset="0.5"/>
-        <GradientStop Color="White" Offset="1"/>
-    </LinearGradientBrush>
-
-    <SolidColorBrush x:Key="ButtonNormalBorder" Color="#BF808080"/>
-
-    <SolidColorBrush x:Key="ButtonNormalBorderLightGray" Color="LightGray"/>
-
-    <LinearGradientBrush x:Key="ButtonMouseOverBlue" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FF47A8EE" Offset="0"/>
-        <GradientStop Color="#FF47A8EE" Offset="1"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ButtonPressedBlue" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FF1286DA" Offset="0"/>
-        <GradientStop Color="#FF1286DA" Offset="1"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ButtonMouseOverLightGray" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="WhiteSmoke" Offset="0"/>
-        <GradientStop Color="WhiteSmoke" Offset="0.5"/>
-        <GradientStop Color="WhiteSmoke" Offset="1"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ButtonPressedLightGray" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FFEBEBEB" Offset="0"/>
-        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-        <GradientStop Color="#FFEBEBEB" Offset="1"/>
-    </LinearGradientBrush>
-    
 
 
 
@@ -226,6 +163,10 @@
         <Setter Property="MinimizeMenuContent" Value="{DynamicResource Minimize(N)}"/>
         <Setter Property="MaximizeMenuContent" Value="{DynamicResource Maximize(X)}"/>
         <Setter Property="CloseMenuContent" Value="{DynamicResource Close(C)}"/>
+        <Setter Property="MinimizeButtonTips" Value="{DynamicResource Minimize}"/>
+        <Setter Property="MaximizeButtonTips" Value="{DynamicResource Maximize}"/>
+        <Setter Property="RestoreButtonTips" Value="{DynamicResource Restore}"/>
+        <Setter Property="CloseButtonTips" Value="{DynamicResource Close}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:WindowEx}">
@@ -276,19 +217,19 @@
                                                    VerticalAlignment="Center" 
                                                    Margin="5,0,0,0"/>
                                         <Button Grid.Column="2" Name="PART_TitleMinimizeButton"
-                                                Width="40" Height="30"  ToolTip="{DynamicResource Minimize}"
+                                                Width="40" Height="30"  ToolTip="{TemplateBinding MinimizeButtonTips}"
                                                 Style="{StaticResource ButtonMinimize}" 
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
                                         <Button Grid.Column="3" Name="PART_TitleMaximizeButton"
-                                                Width="40" Height="30"  ToolTip="{DynamicResource Maximize}"
+                                                Width="40" Height="30"  ToolTip="{TemplateBinding MaximizeButtonTips}"
                                                 Style="{StaticResource ButtonMaximize}"
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
                                         <Button Grid.Column="4" Name="PART_TitleRestoreButton"
-                                                Width="40" Height="30"  ToolTip="{DynamicResource Restore}"
+                                                Width="40" Height="30"  ToolTip="{TemplateBinding RestoreButtonTips}"
                                                 Style="{StaticResource ButtonRestore}"
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
                                         <Button Grid.Column="5" Name="PART_TitleCloseButton" 
-                                                Width="40" Height="30"  ToolTip="{DynamicResource Close}"
+                                                Width="40" Height="30"  ToolTip="{TemplateBinding CloseButtonTips}"
                                                 Style="{StaticResource ButtonClose}"
                                                 HorizontalAlignment="Right" 
                                                 Margin="0,0,5,0" VerticalAlignment="Top" >

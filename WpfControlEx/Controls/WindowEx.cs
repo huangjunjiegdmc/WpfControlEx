@@ -234,6 +234,110 @@ namespace WpfControlEx.Controls
 
         #endregion
 
+        #region MinimizeButtonTips
+
+        /// <summary>
+        /// 最小化
+        /// </summary>
+        public static readonly DependencyProperty MinimizeButtonTipsProperty
+            = DependencyProperty.Register("MinimizeButtonTips", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Minimize"));
+
+        /// <summary>
+        /// 最小化
+        /// </summary>
+        public string MinimizeButtonTips
+        {
+            get
+            {
+                return (string)GetValue(MinimizeButtonTipsProperty);
+            }
+            set
+            {
+                SetValue(MinimizeButtonTipsProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region MaximizeButtonTips
+
+        /// <summary>
+        /// 最大化
+        /// </summary>
+        public static readonly DependencyProperty MaximizeButtonTipsProperty
+            = DependencyProperty.Register("MaximizeButtonTips", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Maximize"));
+
+        /// <summary>
+        /// 最大化
+        /// </summary>
+        public string MaximizeButtonTips
+        {
+            get
+            {
+                return (string)GetValue(MaximizeButtonTipsProperty);
+            }
+            set
+            {
+                SetValue(MaximizeButtonTipsProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region RestoreButtonTips
+
+        /// <summary>
+        /// 向下还原
+        /// </summary>
+        public static readonly DependencyProperty RestoreButtonTipsProperty
+            = DependencyProperty.Register("RestoreButtonTips", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Restore"));
+
+        /// <summary>
+        /// 向下还原
+        /// </summary>
+        public string RestoreButtonTips
+        {
+            get
+            {
+                return (string)GetValue(RestoreButtonTipsProperty);
+            }
+            set
+            {
+                SetValue(RestoreButtonTipsProperty, value);
+            }
+        }
+
+        #endregion
+
+        #region CloseButtonTips
+
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonTipsProperty
+            = DependencyProperty.Register("CloseButtonTips", typeof(string), typeof(WindowEx),
+                new PropertyMetadata("Close"));
+
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        public string CloseButtonTips
+        {
+            get
+            {
+                return (string)GetValue(CloseButtonTipsProperty);
+            }
+            set
+            {
+                SetValue(CloseButtonTipsProperty, value);
+            }
+        }
+
+        #endregion
+
         #region RestoreMenuContent
 
         /// <summary>

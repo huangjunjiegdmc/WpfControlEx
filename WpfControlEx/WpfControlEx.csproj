@@ -83,6 +83,10 @@
     <Compile Include="Controls\WindowEx.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\LightBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

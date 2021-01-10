@@ -18,7 +18,7 @@ namespace WpfControlExDemo
         {
             base.OnStartup(e);
 
-            this.SetLanguage(Constants.LANG_ZH_HANS);
+            //this.SetLanguage(Constants.LANG_ZH_HANS);
         }
     }
 }

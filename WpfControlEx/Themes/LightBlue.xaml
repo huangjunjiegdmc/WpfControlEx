@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <LinearGradientBrush x:Key="WindowTitleBackground"
+                         StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF1890FF" Offset="0"/>
+        <GradientStop Color="#FF1890FF" Offset="0.5"/>
+        <GradientStop Color="#FF1890FF" Offset="0.5"/>
+        <GradientStop Color="#FF1890FF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="NonActiveWindowTitleBackground"
+                         StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#BF1890FF" Offset="0"/>
+        <GradientStop Color="#BF1890FF" Offset="0.5"/>
+        <GradientStop Color="#BF1890FF" Offset="0.5"/>
+        <GradientStop Color="#BF1890FF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="WindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
+        <GradientStop Color="#FF47A8EE" Offset="0"/>
+        <GradientStop Color="#FF47A8EE" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="NonActiveWindowNormalBorder"  EndPoint="0.5,1" StartPoint="0,0">
+        <GradientStop Color="#BF47A8EE" Offset="0"/>
+        <GradientStop Color="#BF47A8EE" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonNormalBackgroundBlue" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FF108EE9" Offset="0"/>
+        <GradientStop Color="#FF108EE9" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonNormalBackgroundWhite" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="White" Offset="0"/>
+        <GradientStop Color="White" Offset="0.5"/>
+        <GradientStop Color="White" Offset="1"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="ButtonNormalBorder" Color="#BF808080"/>
+
+    <SolidColorBrush x:Key="ButtonNormalBorderLightGray" Color="LightGray"/>
+
+    <LinearGradientBrush x:Key="ButtonMouseOverBlue" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FF47A8EE" Offset="0"/>
+        <GradientStop Color="#FF47A8EE" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonPressedBlue" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FF1286DA" Offset="0"/>
+        <GradientStop Color="#FF1286DA" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonMouseOverLightGray" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="WhiteSmoke" Offset="0"/>
+        <GradientStop Color="WhiteSmoke" Offset="0.5"/>
+        <GradientStop Color="WhiteSmoke" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonPressedLightGray" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FFEBEBEB" Offset="0"/>
+        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+        <GradientStop Color="#FFEBEBEB" Offset="1"/>
+    </LinearGradientBrush>
+</ResourceDictionary>
