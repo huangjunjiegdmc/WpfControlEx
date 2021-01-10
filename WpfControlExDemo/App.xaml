@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WpfControlEx;component/Themes/ThemeLightGreen.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WpfControlEx;component/Themes/ThemeLightBlue.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
