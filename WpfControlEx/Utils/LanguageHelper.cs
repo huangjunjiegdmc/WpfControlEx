@@ -40,6 +40,11 @@ namespace WpfControlEx.Utils
                 language = System.Globalization.CultureInfo.CurrentCulture.ToString();
             }
 
+            if (language == CurrentLang)
+            {
+                return;
+            }
+
             string languagePath = string.Empty;
             try
             {
