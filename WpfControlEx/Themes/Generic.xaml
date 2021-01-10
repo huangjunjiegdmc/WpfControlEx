@@ -5,6 +5,10 @@
     xmlns:converter="clr-namespace:WpfControlEx.Converter"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/WpfControlEx;component/Localizations/Language_en.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
     <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 
     <LinearGradientBrush x:Key="WindowTitleBackground"
@@ -137,15 +141,20 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Background="{TemplateBinding Background}">
-                        <Path Stretch="Fill" Stroke="White" StrokeThickness="1" Width="10" Height="10">
+                        <Path Stretch="Fill" Stroke="White" StrokeThickness="1" Width="9" Height="9">
                             <Path.RenderTransform>
                                 <TranslateTransform X="1" Y="-1"></TranslateTransform>
                             </Path.RenderTransform>
                             <Path.Data>
-                                <RectangleGeometry Rect="0 0 1 1"></RectangleGeometry>
+                                <GeometryGroup>
+                                    <LineGeometry StartPoint="0,0" EndPoint="1,0"/>
+                                    <LineGeometry StartPoint="1,0" EndPoint="1,1"/>
+                                    <LineGeometry StartPoint="0,0" EndPoint="0,0.2"/>
+                                    <LineGeometry StartPoint="1,1" EndPoint="0.8,1"/>
+                                </GeometryGroup>
                             </Path.Data>
                         </Path>
-                        <Path Stretch="Fill" Fill="Transparent" Stroke="White" StrokeThickness="1" Width="10" Height="10">
+                        <Path Stretch="Fill" Stroke="White" StrokeThickness="1" Width="9" Height="9">
                             <Path.RenderTransform>
                                 <TranslateTransform X="-1" Y="1"></TranslateTransform>
                             </Path.RenderTransform>
@@ -211,6 +220,12 @@
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeMode" Value="CanMinimize"/>
         <Setter Property="Background" Value="White"/>
+        <Setter Property="RestoreMenuContent" Value="{DynamicResource Restore(R)}"/>
+        <Setter Property="MoveMenuContent" Value="{DynamicResource Move(M)}"/>
+        <Setter Property="SizeMenuContent" Value="{DynamicResource Size(S)}"/>
+        <Setter Property="MinimizeMenuContent" Value="{DynamicResource Minimize(N)}"/>
+        <Setter Property="MaximizeMenuContent" Value="{DynamicResource Maximize(X)}"/>
+        <Setter Property="CloseMenuContent" Value="{DynamicResource Close(C)}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:WindowEx}">
@@ -261,19 +276,19 @@
                                                    VerticalAlignment="Center" 
                                                    Margin="5,0,0,0"/>
                                         <Button Grid.Column="2" Name="PART_TitleMinimizeButton"
-                                                Width="40" Height="30"  ToolTip="{TemplateBinding MinimizeButtonTooltip}"
+                                                Width="40" Height="30"  ToolTip="{DynamicResource Minimize}"
                                                 Style="{StaticResource ButtonMinimize}" 
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
                                         <Button Grid.Column="3" Name="PART_TitleMaximizeButton"
-                                                Width="40" Height="30"  ToolTip="{TemplateBinding MaximizeButtonTooltip}"
+                                                Width="40" Height="30"  ToolTip="{DynamicResource Maximize}"
                                                 Style="{StaticResource ButtonMaximize}"
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
                                         <Button Grid.Column="4" Name="PART_TitleRestoreButton"
-                                                Width="40" Height="30"  ToolTip="{TemplateBinding RestoreButtonTooltip}"
+                                                Width="40" Height="30"  ToolTip="{DynamicResource Restore}"
                                                 Style="{StaticResource ButtonRestore}"
                                                 Padding="5,0,5,0" VerticalAlignment="Top"/>
                                         <Button Grid.Column="5" Name="PART_TitleCloseButton" 
-                                                Width="40" Height="30"  ToolTip="{TemplateBinding CloseButtonTooltip}"
+                                                Width="40" Height="30"  ToolTip="{DynamicResource Close}"
                                                 Style="{StaticResource ButtonClose}"
                                                 HorizontalAlignment="Right" 
                                                 Margin="0,0,5,0" VerticalAlignment="Top" >

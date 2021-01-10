@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+
+    <!--#region Windows Commands-->
+
+    <s:String x:Key="Minimize">最小化</s:String>
+    <s:String x:Key="Maximize">最大化</s:String>
+    <s:String x:Key="Restore">向下还原</s:String>
+    <s:String x:Key="Close">关闭</s:String>
+
+    <!--#endregion-->
+
+    <!--#region System Menus-->
+
+    <s:String x:Key="Restore(R)">还原(&amp;R)</s:String>
+    <s:String x:Key="Move(M)">移动(&amp;M)</s:String>
+    <s:String x:Key="Size(S)">大小(&amp;S)</s:String>
+    <s:String x:Key="Minimize(N)">最小化(&amp;N)</s:String>
+    <s:String x:Key="Maximize(X)">最大化(&amp;X)</s:String>
+    <s:String x:Key="Close(C)">关闭(&amp;C)</s:String>
+
+    <!--#endregion-->
+
+</ResourceDictionary>

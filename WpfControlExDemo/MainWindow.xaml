@@ -7,7 +7,7 @@
                        xmlns:wpfcontrolex="clr-namespace:WpfControlEx.Controls;assembly=WpfControlEx"
                        mc:Ignorable="d"
                        Title="MainWindow" Height="450" Width="800"
-                       WindowStartupLocation="CenterScreen" CloseButtonTooltip="{StaticResource CloseButton}" RestoreMenuContent="{StaticResource RestoreMenu}"
+                       WindowStartupLocation="CenterScreen"
                        Icon="Images/logo.ico">
 
     <Grid>
@@ -19,6 +19,7 @@
         <StackPanel Orientation="Horizontal">
             <Button Name="btnChildWindow" Width="100" Content="ChildWindow" Click="btnChildWindow_Click"></Button>
             <Button Name="btnMessageBoxEx" Width="100" Content="MessageBoxEx" Click="btnMessageBoxEx_Click"></Button>
+            <Button x:Name="btnLang" Width="100" Content="SetLang" Click="btnLang_Click"/>
         </StackPanel>
     </Grid>
 </wpfcontrolex:WindowEx>

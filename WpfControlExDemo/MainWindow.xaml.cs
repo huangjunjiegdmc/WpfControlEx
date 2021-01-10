@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfControlEx.Controls;
+using WpfControlEx.Utils;
 
 namespace WpfControlExDemo
 {
@@ -47,6 +48,12 @@ namespace WpfControlExDemo
             msg += "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
             msg += "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
             MessageBoxEx.Show(this, msg, "TestTitle");
+        }
+
+        private void btnLang_Click(object sender, RoutedEventArgs e)
+        {
+            WpfControlEx.Utils.LanguageHelper.PriorityLangSource = WpfControlEx.Utils.LanguageSource.External;
+            Application.Current.SetLanguage(Constants.LANG_ZH_HANT);
         }
     }
 }
