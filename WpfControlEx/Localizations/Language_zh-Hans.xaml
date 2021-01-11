@@ -22,4 +22,13 @@
 
     <!--#endregion-->
 
+    <!--#region MessageBox Commands-->
+
+    <s:String x:Key="Confirm">确定</s:String>
+    <s:String x:Key="Yes">是</s:String>
+    <s:String x:Key="No">否</s:String>
+    <s:String x:Key="Cancel">取消</s:String>
+
+    <!--#endregion-->
+
 </ResourceDictionary>

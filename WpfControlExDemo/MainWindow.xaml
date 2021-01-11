@@ -19,7 +19,9 @@
         <StackPanel Orientation="Horizontal">
             <Button Name="btnChildWindow" Width="100" Content="ChildWindow" Click="btnChildWindow_Click"></Button>
             <Button Name="btnMessageBoxEx" Width="100" Content="MessageBoxEx" Click="btnMessageBoxEx_Click"></Button>
-            <Button x:Name="btnLang" Width="100" Content="SetLang" Click="btnLang_Click"/>
+            <Button x:Name="btnzhHans" Width="100" Content="SetzhHans" Click="btnzhHans_Click"/>
+            <Button x:Name="btnzhHant" Width="100" Content="SetzhHant" Click="btnzhHant_Click"/>
+            <Button x:Name="btnen" Width="100" Content="Seten" Click="btnen_Click"/>
             <Button x:Name="btnTheme" Width="100" Content="SetGreen" Click="btnTheme_Click"/>
             <Button x:Name="btnBlue" Width="100" Content="SetBlue" Click="btnBlue_Click"/>
         </StackPanel>

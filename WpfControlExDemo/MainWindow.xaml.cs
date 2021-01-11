@@ -48,13 +48,23 @@ namespace WpfControlExDemo
             msg += "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
             msg += "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
             msg += "WindowStartupLocation = WindowStartupLocation.CenterOwner;";
-            MessageBoxEx.Show(this, msg, "TestTitle");
+            MessageBoxEx.Show(this, msg, "TestTitle", MessageBoxButton.OKCancel);
         }
 
-        private void btnLang_Click(object sender, RoutedEventArgs e)
+        private void btnzhHans_Click(object sender, RoutedEventArgs e)
         {
-            WpfControlEx.Utils.LanguageHelper.PriorityLangSource = WpfControlEx.Utils.LanguageSource.External;
+            //WpfControlEx.Utils.LanguageHelper.PriorityLangSource = WpfControlEx.Utils.LanguageSource.External;
+            Application.Current.SetLanguage(Constants.LANG_ZH_HANS);
+        }
+
+        private void btnzhHant_Click(object sender, RoutedEventArgs e)
+        {
             Application.Current.SetLanguage(Constants.LANG_ZH_HANT);
+        }
+
+        private void btnen_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.SetLanguage(Constants.LANG_EN);
         }
 
         private void btnTheme_Click(object sender, RoutedEventArgs e)

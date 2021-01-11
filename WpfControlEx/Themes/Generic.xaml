@@ -228,50 +228,54 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MessageBoxExStyle" TargetType="{x:Type controls:MessageBoxWindow}">
-        <Setter Property="WindowChrome.WindowChrome">
-            <Setter.Value>
-                <WindowChrome CaptionHeight="50" 
-                                    CornerRadius="0" 
-                                    GlassFrameThickness="0"/>
-            </Setter.Value>
-        </Setter>
+    <Style TargetType="{x:Type controls:MessageBoxWindow}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
         <Setter Property="WindowStyle" Value="None"></Setter>
         <Setter Property="Background" Value="White"/>
+        <Setter Property="MoveMenuContent" Value="{DynamicResource Move(M)}"/>
+        <Setter Property="CloseMenuContent" Value="{DynamicResource Close(C)}"/>
+        <Setter Property="ConfirmButtonContent" Value="{DynamicResource Confirm}"/>
+        <Setter Property="YesButtonContent" Value="{DynamicResource Yes}"/>
+        <Setter Property="NoButtonContent" Value="{DynamicResource No}"/>
+        <Setter Property="CancelButtonContent" Value="{DynamicResource Cancel}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:MessageBoxWindow}">
-                    <Border Name="PART_WindowBorder" Background="{TemplateBinding Background}"
-                            BorderThickness="1"
-                            BorderBrush="{StaticResource WindowNormalBorder}">
+                    <!--最外层的Border Background="White"保证窗口inactive时，PART_WindowBorder和PART_WindowTitleBackground一样效果-->
+                    <Border Background="White">
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                            <Border Name="PART_WindowBorder" Background="{TemplateBinding Background}"
+                            BorderThickness="1.5"
+                            BorderBrush="{DynamicResource WindowNormalBorder}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
 
-                            <Grid Name="PART_TitleBar" Height="50">
-                                <Border Margin="20,10,20,10">
-                                    <TextBlock Grid.Column="1" FontSize="18" 
-                                           Foreground="Black" VerticalAlignment="Center" 
-                                                   Text="{TemplateBinding Title}"/>
-                                </Border>
-                            </Grid>
+                                    <Grid Name="PART_TitleBar" Height="50" Background="{TemplateBinding Background}">
+                                        <Border Margin="20,10,20,10">
+                                            <TextBlock Grid.Column="0" FontSize="18" 
+                                                       Foreground="Black" VerticalAlignment="Center" 
+                                                       Text="{TemplateBinding Title}"/>
+                                        </Border>
+                                    </Grid>
 
-                            <Grid Grid.Row="1">
-                                <Border>
-                                    <AdornerDecorator>
-                                        <ContentPresenter/>
-                                    </AdornerDecorator>
-                                </Border>
-                            </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Border>
+                                            <AdornerDecorator>
+                                                <ContentPresenter/>
+                                            </AdornerDecorator>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <!--  handle active/inactive state  -->
                         <Trigger Property="IsAppActive" Value="False">
-                            <Setter TargetName="PART_WindowBorder" Property="BorderBrush" Value="{StaticResource NonActiveWindowNormalBorder}" />
+                            <Setter TargetName="PART_WindowBorder" Property="BorderBrush" Value="{DynamicResource NonActiveWindowNormalBorder}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
