@@ -53,18 +53,17 @@ namespace WpfControlExDemo
 
         private void btnzhHans_Click(object sender, RoutedEventArgs e)
         {
-            //WpfControlEx.Utils.LanguageHelper.PriorityLangSource = WpfControlEx.Utils.LanguageSource.External;
-            Application.Current.SetLanguage(Constants.LANG_ZH_HANS);
+            Application.Current.SetLanguage(LanguageEnum.zh_Hans);
         }
 
         private void btnzhHant_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.SetLanguage(Constants.LANG_ZH_HANT);
+            Application.Current.SetLanguage(LanguageEnum.zh_Hant);
         }
 
         private void btnen_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.SetLanguage(Constants.LANG_EN);
+            Application.Current.SetLanguage(LanguageEnum.en);
         }
 
         private void btnTheme_Click(object sender, RoutedEventArgs e)

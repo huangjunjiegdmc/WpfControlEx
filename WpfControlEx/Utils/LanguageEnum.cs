@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 namespace WpfControlEx.Utils
 {
     /// <summary>
-    /// 常量
+    /// 语言枚举
     /// </summary>
-    public class Constants
+    public enum LanguageEnum
     {
         /// <summary>
-        /// 语言-英语
+        /// 英文
         /// </summary>
-        public const string LANG_EN = "en";
+        en,
 
         /// <summary>
-        /// 语言-简体中文
+        /// 简体中文
         /// </summary>
-        public const string LANG_ZH_HANS = "zh-Hans";
+        zh_Hans,
 
         /// <summary>
-        /// 语言-繁体中文
+        /// 繁体中文
         /// </summary>
-        public const string LANG_ZH_HANT = "zh-Hant";
+        zh_Hant
     }
 }
