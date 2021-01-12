@@ -66,6 +66,11 @@ namespace WpfControlExDemo
             Application.Current.SetLanguage(LanguageEnum.en);
         }
 
+        private void btnru_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.SetLanguage(@"/WpfControlExDemo;component/Localizations/Language_ru.xaml", "ru");
+        }
+
         private void btnTheme_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.ApplyTheme("LightGreen");

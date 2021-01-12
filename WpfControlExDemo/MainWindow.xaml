@@ -12,16 +12,25 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal">
-            <Button Name="btnChildWindow" Width="100" Content="ChildWindow" Click="btnChildWindow_Click"></Button>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Button Name="btnChildWindow" Width="100" Height="25" Content="ChildWindow" Click="btnChildWindow_Click"></Button>
             <Button Name="btnMessageBoxEx" Width="100" Content="MessageBoxEx" Click="btnMessageBoxEx_Click"></Button>
-            <Button x:Name="btnzhHans" Width="100" Content="SetzhHans" Click="btnzhHans_Click"/>
-            <Button x:Name="btnzhHant" Width="100" Content="SetzhHant" Click="btnzhHant_Click"/>
-            <Button x:Name="btnen" Width="100" Content="Seten" Click="btnen_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
+            <Button x:Name="btnzhHans" Width="100" Height="25" Content="Setzh Hans" Click="btnzhHans_Click"/>
+            <Button x:Name="btnzhHant" Width="100" Content="Setzh Hant" Click="btnzhHant_Click"/>
+            <Button x:Name="btnen" Width="100" Content="Set en" Click="btnen_Click"/>
+            <Button x:Name="btnRu" Width="100" Content="Set local ru" Click="btnru_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
             <Button x:Name="btnTheme" Width="100" Content="SetGreen" Click="btnTheme_Click"/>
             <Button x:Name="btnBlue" Width="100" Content="SetBlue" Click="btnBlue_Click"/>
         </StackPanel>

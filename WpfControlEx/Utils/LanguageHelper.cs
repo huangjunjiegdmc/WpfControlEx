@@ -124,7 +124,7 @@ namespace WpfControlEx.Utils
                     app.Resources.MergedDictionaries.Remove(oldRd);
                 }
                 oldRd = app.Resources.MergedDictionaries.FirstOrDefault(
-                   p => p.Source.OriginalString.Contains(path));
+                   p => p.Source.OriginalString.Contains(path.Substring(0, path.IndexOf(language))));
                 if (oldRd != null)
                 {
                     app.Resources.MergedDictionaries.Remove(oldRd);
