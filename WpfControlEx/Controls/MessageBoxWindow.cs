@@ -353,12 +353,12 @@ namespace WpfControlEx.Controls
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Margin = new Thickness(0, 0, 10, 0)
             };
-            
+
             btn_PART_ButtonOK = new Button()
             {
                 Content = ConfirmButtonContent,
                 Style = Application.Current.TryFindResource("ButtonBlue") as Style,
-                Width = 100,
+                MinWidth = 100,
                 Height = 30,
                 Margin = new Thickness(0, 0, 5, 0),
                 IsDefault = true
@@ -370,7 +370,7 @@ namespace WpfControlEx.Controls
             {
                 Content = YesButtonContent,
                 Style = Application.Current.TryFindResource("ButtonBlue") as Style,
-                Width = 100,
+                MinWidth = 100,
                 Height = 30,
                 Margin = new Thickness(0, 0, 5, 0)
             };
@@ -381,7 +381,7 @@ namespace WpfControlEx.Controls
             {
                 Content = NoButtonContent,
                 Style = Application.Current.TryFindResource("ButtonBlue") as Style,
-                Width = 100,
+                MinWidth = 100,
                 Height = 30,
                 Margin = new Thickness(0, 0, 5, 0)
             };
@@ -392,7 +392,7 @@ namespace WpfControlEx.Controls
             {
                 Content = CancelButtonContent,
                 Style = Application.Current.TryFindResource("ButtonWhite") as Style,
-                Width = 100,
+                MinWidth = 100,
                 Height = 30,
                 Margin = new Thickness(0, 0, 10, 0)
             };
