@@ -6,10 +6,14 @@ A WPF control set that supports multi-language and multi-themes.
 1、多语言支持，内置英文、中文简体、中文繁体，可通过以下方法设置控件库外（引用控件库的程序）、控件库未支持的语言资源；
 
 ```c#
-LanguageHelper.SetLanguage(this Application app, string path, string language)
+LanguageHelper.SetLanguage(this Application app, string path, string language);
 ```
 
-2、设置控件库外（引用控件库的程序）语言资源时，语言资源文件命名必须包括语言编码，如：Language_{0}.xaml，{0}是语言编码替代符，语言编码统一按如下方式获取：System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures)；
+2、设置控件库外（引用控件库的程序）语言资源时，语言资源文件命名必须包括语言编码，如：Language_{0}.xaml，{0}是语言编码替代符，语言编码统一按如下方式获取：
+
+```c#
+System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures);
+```
 
 ## 主题
 
