@@ -16,7 +16,8 @@
     <Style TargetType="{x:Type controls:WindowEx}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
         <Setter Property="WindowStyle" Value="None"/>
-        <Setter Property="ResizeMode" Value="CanMinimize"/>
+        <Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="RestoreMenuContent" Value="{DynamicResource Restore(R)}"/>
         <Setter Property="MoveMenuContent" Value="{DynamicResource Move(M)}"/>

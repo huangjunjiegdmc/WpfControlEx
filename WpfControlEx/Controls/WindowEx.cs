@@ -107,6 +107,11 @@ namespace WpfControlEx.Controls
         /// </summary>
         private Storyboard m_flashWindowAnimation;
 
+        /// <summary>
+        /// 窗口句柄
+        /// </summary>
+        private IntPtr handle = IntPtr.Zero;
+
         #endregion
 
 
@@ -265,7 +270,9 @@ namespace WpfControlEx.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            
+
+            handle = new WindowInteropHelper(this).Handle;
+
             //设置无标题窗口工作区，不遮挡任务栏
             Rect rect = SystemParameters.WorkArea;
             MaxWidth = rect.Width;
@@ -358,6 +365,17 @@ namespace WpfControlEx.Controls
         private void MouseHook_MouseMoveEvent(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             //Title = e.X.ToString() + " - " + e.Y.ToString();
+        }
+
+        protected override void OnStateChanged(EventArgs e)
+        {
+            base.OnStateChanged(e);
+
+            if (WindowState == WindowState.Maximized)
+            {
+                //窗口的ResizeMode设置为CanResizeWithGrip时，最大化窗口时默认位置不在屏幕左上角，调整屏幕左上角位置为：0,0
+                WinUserApi.MoveWindow(handle, 0, 0, (int)MaxWidth, (int)MaxHeight, false);
+            }
         }
 
         protected override void OnClosing(CancelEventArgs e)
