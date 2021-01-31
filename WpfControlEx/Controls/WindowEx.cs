@@ -125,14 +125,14 @@ namespace WpfControlEx.Controls
         #region IsModelWindow
 
         /// <summary>
-        /// 是否模式窗口
+        /// 是否模态窗口
         /// </summary>
         private static readonly DependencyProperty IsModelWindowProperty
             = DependencyProperty.Register("IsModelWindow", typeof(bool), typeof(WindowEx),
-                new PropertyMetadata(true));
+                new PropertyMetadata(false));
         
         /// <summary>
-        /// 是否模式窗口
+        /// 是否模态窗口
         /// </summary>
         public bool IsModelWindow
         {
@@ -268,13 +268,13 @@ namespace WpfControlEx.Controls
         }
 
         /// <summary>
-        /// 重写ShowDialog，确定当前窗口是否模态窗口
+        /// 重写ShowDialog，确定当前窗口是否模态窗口，模态窗口不允许透明，否则闪烁子窗口时，子窗口变为半透明，效果不好
         /// </summary>
         /// <returns></returns>
         public new bool? ShowDialog()
         {
             IsModelWindow = true;
-            AllowsTransparency = false;//模态窗口不允许透明，否则闪烁子窗口时，子窗口变为半透明，效果不好
+            AllowsTransparency = false;
             return base.ShowDialog();
         }
 
@@ -346,6 +346,10 @@ namespace WpfControlEx.Controls
         /// </summary>
         private void SetModelWindowProperty()
         {
+            if (!IsModelWindow)
+            {
+                IsModelWindow = WindowHelper.IsModal(this);
+            }
             if (IsModelWindow)
             {
                 ResizeMode = ResizeMode.NoResize;
