@@ -267,12 +267,23 @@ namespace WpfControlEx.Controls
             }
         }
 
+        /// <summary>
+        /// 重写ShowDialog，确定当前窗口是否模态窗口
+        /// </summary>
+        /// <returns></returns>
+        public new bool? ShowDialog()
+        {
+            IsModelWindow = true;
+            AllowsTransparency = false;//模态窗口不允许透明，否则闪烁子窗口时，子窗口变为半透明，效果不好
+            return base.ShowDialog();
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
+            
             handle = new WindowInteropHelper(this).Handle;
-
+            
             //设置无标题窗口工作区，不遮挡任务栏
             Rect rect = SystemParameters.WorkArea;
             MaxWidth = rect.Width;
@@ -335,9 +346,10 @@ namespace WpfControlEx.Controls
         /// </summary>
         private void SetModelWindowProperty()
         {
-            IsModelWindow = WindowHelper.IsModal(this);
             if (IsModelWindow)
             {
+                ResizeMode = ResizeMode.NoResize;
+
                 btnMaximize.Visibility = Visibility.Collapsed;
                 btnRestore.Visibility = Visibility.Collapsed;
                 btnMinimize.Visibility = Visibility.Collapsed;
