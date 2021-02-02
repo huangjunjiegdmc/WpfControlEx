@@ -62,45 +62,40 @@
 
                                     <Grid Name="PART_TitleBar" Height="30">
                                         <Border Name="PART_WindowTitleBackground" BorderThickness="0,0,0,0"
-                                    Background="{DynamicResource WindowTitleBackground}">
+                                                Background="{DynamicResource WindowTitleBackground}">
                                             <Grid >
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto"/>
                                                     <ColumnDefinition/>
                                                     <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <Image x:Name="PART_Icon" 
-                                               Source="{TemplateBinding Icon}"
-                                               Width="20" Height="20" 
-                                               Margin="5,0,0,0" 
-                                               VerticalAlignment="Center"></Image>
+                                                <Image x:Name="PART_Icon" Source="{TemplateBinding Icon}"
+                                                       Width="20" Height="20" Margin="5,0,0,0" VerticalAlignment="Center"></Image>
                                                 <TextBlock Grid.Column="1" FontSize="14" 
-                                                   Text="{TemplateBinding Title}"
-                                                   Foreground="White"
-                                                   VerticalAlignment="Center" 
-                                                   Margin="5,0,0,0"/>
-                                                <Button Grid.Column="2" Name="PART_TitleMinimizeButton"
-                                                Width="40" Height="30"  ToolTip="{TemplateBinding MinimizeButtonTips}"
-                                                Style="{StaticResource ButtonMinimize}" 
-                                                Padding="5,0,5,0" VerticalAlignment="Top"/>
-                                                <Button Grid.Column="3" Name="PART_TitleMaximizeButton"
-                                                Width="40" Height="30"  ToolTip="{TemplateBinding MaximizeButtonTips}"
-                                                Style="{StaticResource ButtonMaximize}"
-                                                Padding="5,0,5,0" VerticalAlignment="Top"/>
-                                                <Button Grid.Column="4" Name="PART_TitleRestoreButton"
-                                                Width="40" Height="30"  ToolTip="{TemplateBinding RestoreButtonTips}"
-                                                Style="{StaticResource ButtonRestore}"
-                                                Padding="5,0,5,0" VerticalAlignment="Top"/>
-                                                <Button Grid.Column="5" Name="PART_TitleCloseButton" 
-                                                Width="40" Height="30"  ToolTip="{TemplateBinding CloseButtonTips}"
-                                                Style="{StaticResource ButtonClose}"
-                                                HorizontalAlignment="Right" 
-                                                Margin="0,0,5,0" VerticalAlignment="Top" >
-                                                </Button>
+                                                           Text="{TemplateBinding Title}"
+                                                           Foreground="White"
+                                                           VerticalAlignment="Center" 
+                                                           Margin="5,0,0,0"/>
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                    <Button x:Name="PART_TitleMinimizeButton"
+                                                    Width="40" Height="30"  ToolTip="{TemplateBinding MinimizeButtonTips}"
+                                                    Style="{StaticResource ButtonMinimize}" 
+                                                    Padding="5,0,5,0" VerticalAlignment="Top"/>
+                                                    <Button x:Name="PART_TitleMaximizeButton"
+                                                    Width="40" Height="30"  ToolTip="{TemplateBinding MaximizeButtonTips}"
+                                                    Style="{StaticResource ButtonMaximize}"
+                                                    Padding="5,0,5,0" VerticalAlignment="Top"/>
+                                                    <Button x:Name="PART_TitleRestoreButton"
+                                                    Width="40" Height="30"  ToolTip="{TemplateBinding RestoreButtonTips}"
+                                                    Style="{StaticResource ButtonRestore}"
+                                                    Padding="5,0,5,0" VerticalAlignment="Top"/>
+                                                    <Button x:Name="PART_TitleCloseButton" 
+                                                    Width="40" Height="30"  ToolTip="{TemplateBinding CloseButtonTips}"
+                                                    Style="{StaticResource ButtonClose}"
+                                                    HorizontalAlignment="Right" 
+                                                    Margin="0,0,5,0" VerticalAlignment="Top" />
+                                                </StackPanel>
                                             </Grid>
                                         </Border>
                                     </Grid>
