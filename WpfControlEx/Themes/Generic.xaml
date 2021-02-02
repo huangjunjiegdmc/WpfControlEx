@@ -12,7 +12,7 @@
     
     <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 
-
+    
     <Style TargetType="{x:Type controls:WindowEx}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
         <Setter Property="WindowStyle" Value="None"/>
@@ -38,7 +38,7 @@
                     <Border Background="White">
                         <Grid>
                             <Border Name="PART_WindowBorder" Background="{TemplateBinding Background}"
-                            BorderThickness="3,0,3,3"
+                            BorderThickness="2,0,2,2"
                             BorderBrush="{DynamicResource WindowNormalBorder}">
                                 <Grid SnapsToDevicePixels="True">
                                     <Grid.RowDefinitions>

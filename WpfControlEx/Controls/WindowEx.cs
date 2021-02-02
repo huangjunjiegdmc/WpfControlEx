@@ -148,49 +148,6 @@ namespace WpfControlEx.Controls
 
         #endregion
 
-        #region TitleBarVisible
-
-        /// <summary>
-        /// 是否显示标题栏
-        /// </summary>
-        public static readonly DependencyProperty TitleBarVisibleProperty
-            = DependencyProperty.Register("TitleBarVisible", typeof(bool), typeof(WindowEx),
-                new PropertyMetadata(true, OnTitleBarVisiblePropertyChangedCallback));
-
-        private static void OnTitleBarVisiblePropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            WindowEx windowEx = d as WindowEx;
-
-            if (e.NewValue != e.OldValue)
-            {
-                if (!(bool)e.NewValue)
-                {
-                    windowEx.titleBar.Visibility = Visibility.Collapsed;
-                }
-                else
-                {
-                    windowEx.titleBar.Visibility = Visibility.Visible;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 是否显示标题栏
-        /// </summary>
-        public bool TitleBarVisible
-        {
-            get
-            {
-                return (bool)GetValue(TitleBarVisibleProperty);
-            }
-            set
-            {
-                SetValue(TitleBarVisibleProperty, value);
-            }
-        }
-
-        #endregion
-
         #region ShowMaskGird
 
         /// <summary>
