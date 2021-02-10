@@ -53,22 +53,22 @@ namespace WpfControlExDemo
 
         private void btnzhHans_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.SetLanguage(LanguageEnum.zh_Hans);
+            LanguageHelper.SetLanguage(LanguageEnum.zh_Hans);
         }
 
         private void btnzhHant_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.SetLanguage(LanguageEnum.zh_Hant);
+            LanguageHelper.SetLanguage(LanguageEnum.zh_Hant);
         }
 
         private void btnen_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.SetLanguage(LanguageEnum.en);
+            LanguageHelper.SetLanguage(LanguageEnum.en);
         }
 
         private void btnru_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.SetLanguage(@"/WpfControlExDemo;component/Localizations/Language_ru.xaml", "ru");
+            LanguageHelper.SetLanguage(@"/WpfControlExDemo;component/Localizations/Language_ru.xaml", "ru");
         }
 
         private void btnTheme_Click(object sender, RoutedEventArgs e)

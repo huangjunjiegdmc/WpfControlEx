@@ -24,9 +24,8 @@ namespace WpfControlEx.Utils
         /// <summary>
         /// 设置当前语言
         /// </summary>
-        /// <param name="app">扩展Application方法</param>
         /// <param name="languageEnum">语言编码——统一按如下方式获取：System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures)，中文简体：zh-Hans；英文：en</param>
-        public static void SetLanguage(this Application app, LanguageEnum languageEnum)
+        public static void SetLanguage(LanguageEnum languageEnum)
         {
             string language = Enum.GetName(typeof(LanguageEnum), languageEnum).Replace("_", "-");
 
@@ -40,11 +39,11 @@ namespace WpfControlEx.Utils
             try
             {
                 //先移除已添加的语言资源字典
-                ResourceDictionary oldRd = app.Resources.MergedDictionaries.FirstOrDefault(
+                ResourceDictionary oldRd = Application.Current.Resources.MergedDictionaries.FirstOrDefault(
                     p => p.Source.OriginalString.Contains(@"WpfControlEx;component/Localizations/Language_"));
                 if (oldRd != null)
                 {
-                    app.Resources.MergedDictionaries.Remove(oldRd);
+                    Application.Current.Resources.MergedDictionaries.Remove(oldRd);
                 }
 
                 languagePath = String.Format(@"/WpfControlEx;component/Localizations/Language_{0}.xaml", language);
@@ -56,7 +55,7 @@ namespace WpfControlEx.Utils
                 {
                     return;
                 }
-                app.Resources.MergedDictionaries.Add(newRd);
+                Application.Current.Resources.MergedDictionaries.Add(newRd);
 
                 #region 本地资源文件
                 //{
@@ -108,26 +107,25 @@ namespace WpfControlEx.Utils
         /// <summary>
         /// 根据指定的语言资源路径设置当前语言，通常用于设置控件库缺少的语言包
         /// </summary>
-        /// <param name="app">扩展Application方法</param>
         /// <param name="path">语言资源路径</param>
         /// <param name="language">语言编码——统一按如下方式获取：System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures)</param>
-        public static void SetLanguage(this Application app, string path, string language)
+        public static void SetLanguage(string path, string language)
         {
             string languagePath = string.Empty;
             try
             {
                 //先移除已添加的语言资源字典
-                ResourceDictionary oldRd = app.Resources.MergedDictionaries.FirstOrDefault(
+                ResourceDictionary oldRd = Application.Current.Resources.MergedDictionaries.FirstOrDefault(
                     p => p.Source.OriginalString.Contains(@"WpfControlEx;component/Localizations/Language_"));
                 if (oldRd != null)
                 {
-                    app.Resources.MergedDictionaries.Remove(oldRd);
+                    Application.Current.Resources.MergedDictionaries.Remove(oldRd);
                 }
-                oldRd = app.Resources.MergedDictionaries.FirstOrDefault(
+                oldRd = Application.Current.Resources.MergedDictionaries.FirstOrDefault(
                    p => p.Source.OriginalString.Contains(path.Substring(0, path.IndexOf(language))));
                 if (oldRd != null)
                 {
-                    app.Resources.MergedDictionaries.Remove(oldRd);
+                    Application.Current.Resources.MergedDictionaries.Remove(oldRd);
                 }
 
                 var newRd = new ResourceDictionary()
@@ -138,7 +136,7 @@ namespace WpfControlEx.Utils
                 {
                     return;
                 }
-                app.Resources.MergedDictionaries.Add(newRd);
+                Application.Current.Resources.MergedDictionaries.Add(newRd);
 
 
                 CurrentLang = language;
