@@ -53,7 +53,6 @@
   <ItemGroup>
     <Compile Include="Utils\LanguageEnum.cs" />
     <Compile Include="Utils\LanguageHelper.cs" />
-    <Compile Include="Utils\LanguageSource.cs" />
     <Compile Include="Themes\ThemeManager.cs" />
     <Page Include="Localizations\Language_en.xaml">
       <SubType>Designer</SubType>
