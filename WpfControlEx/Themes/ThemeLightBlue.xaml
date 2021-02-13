@@ -184,8 +184,7 @@
                                 <LineGeometry StartPoint="0,0" EndPoint="1,1"></LineGeometry>
                             </Path.Data>
                         </Path>
-                        <Path Stretch="Fill" Fill="{StaticResource WindowTitleBackground}" 
-                              Stroke="White" StrokeThickness="1" Width="11" Height="11">
+                        <Path Stretch="Fill" Stroke="White" StrokeThickness="1" Width="11" Height="11">
                             <Path.Data>
                                 <LineGeometry StartPoint="0,1" EndPoint="1,0"></LineGeometry>
                             </Path.Data>
