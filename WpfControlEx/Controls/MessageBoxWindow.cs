@@ -18,7 +18,7 @@ namespace WpfControlEx.Controls
     /// </summary>
     [TemplatePart(Name = PART_TitleBar, Type = typeof(UIElement))]
     [TemplatePart(Name = PART_TitleCloseButton, Type = typeof(UIElement))]
-    public class MessageBoxWindow : MyWindowBase
+    public class MessageBoxWindow : WindowBase
     {
         #region 常量
 

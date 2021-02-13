@@ -7,14 +7,14 @@ using System.Windows;
 
 namespace WpfControlEx.Controls
 {
-    public class MyWindowBase : Window
+    public class WindowBase : Window
     {
         #region 属性
 
         #region IsAppActive
 
         public static readonly DependencyProperty IsAppActiveProperty
-            = DependencyProperty.Register("IsAppActive", typeof(bool), typeof(MyWindowBase),
+            = DependencyProperty.Register("IsAppActive", typeof(bool), typeof(WindowBase),
                 new PropertyMetadata(true));
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace WpfControlEx.Controls
         /// 最小化
         /// </summary>
         public static readonly DependencyProperty MinimizeButtonTipsProperty
-            = DependencyProperty.Register("MinimizeButtonTips", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("MinimizeButtonTips", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Minimize"));
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace WpfControlEx.Controls
         /// 最大化
         /// </summary>
         public static readonly DependencyProperty MaximizeButtonTipsProperty
-            = DependencyProperty.Register("MaximizeButtonTips", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("MaximizeButtonTips", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Maximize"));
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace WpfControlEx.Controls
         /// 向下还原
         /// </summary>
         public static readonly DependencyProperty RestoreButtonTipsProperty
-            = DependencyProperty.Register("RestoreButtonTips", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("RestoreButtonTips", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Restore"));
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace WpfControlEx.Controls
         /// 关闭
         /// </summary>
         public static readonly DependencyProperty CloseButtonTipsProperty
-            = DependencyProperty.Register("CloseButtonTips", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("CloseButtonTips", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Close"));
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace WpfControlEx.Controls
         /// 还原(R)
         /// </summary>
         public static readonly DependencyProperty RestoreMenuContentProperty
-            = DependencyProperty.Register("RestoreMenuContent", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("RestoreMenuContent", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Restore(&R)"));
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace WpfControlEx.Controls
         /// 移动(M)
         /// </summary>
         public static readonly DependencyProperty MoveMenuContentProperty
-            = DependencyProperty.Register("MoveMenuContent", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("MoveMenuContent", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Move(&M)"));
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace WpfControlEx.Controls
         /// 大小(S)
         /// </summary>
         public static readonly DependencyProperty SizeMenuContentProperty
-            = DependencyProperty.Register("SizeMenuContent", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("SizeMenuContent", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Size(&S)"));
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace WpfControlEx.Controls
         /// 最小化(N)
         /// </summary>
         public static readonly DependencyProperty MinimizeMenuContentProperty
-            = DependencyProperty.Register("MinimizeMenuContent", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("MinimizeMenuContent", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Minimize(&N)"));
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace WpfControlEx.Controls
         /// 最大化(X)
         /// </summary>
         public static readonly DependencyProperty MaximizeMenuContentProperty
-            = DependencyProperty.Register("MaximizeMenuContent", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("MaximizeMenuContent", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Maximize(&X)"));
 
         /// <summary>
@@ -274,7 +274,7 @@ namespace WpfControlEx.Controls
         /// 关闭(C)
         /// </summary>
         public static readonly DependencyProperty CloseMenuContentProperty
-            = DependencyProperty.Register("CloseMenuContent", typeof(string), typeof(MyWindowBase),
+            = DependencyProperty.Register("CloseMenuContent", typeof(string), typeof(WindowBase),
                 new PropertyMetadata("Close(&C)"));
 
         /// <summary>
@@ -307,9 +307,9 @@ namespace WpfControlEx.Controls
 
             foreach (var w in Application.Current.Windows)
             {
-                if (w is MyWindowBase)
+                if (w is WindowBase)
                 {
-                    MyWindowBase win = w as MyWindowBase;
+                    WindowBase win = w as WindowBase;
                     if (!win.IsAppActive)
                         win.IsAppActive = true;
                 }
@@ -326,9 +326,9 @@ namespace WpfControlEx.Controls
                     bool hasActiveWindow = false;
                     foreach (var w in Application.Current.Windows)
                     {
-                        if (w is MyWindowBase)
+                        if (w is WindowBase)
                         {
-                            MyWindowBase win = w as MyWindowBase;
+                            WindowBase win = w as WindowBase;
                             if (win.IsActive)
                             {
                                 hasActiveWindow = true;
@@ -341,9 +341,9 @@ namespace WpfControlEx.Controls
                     {
                         foreach (var w in Application.Current.Windows)
                         {
-                            if (w is MyWindowBase)
+                            if (w is WindowBase)
                             {
-                                MyWindowBase win = w as MyWindowBase;
+                                WindowBase win = w as WindowBase;
                                 if (!win.IsAppActive)
                                     win.IsAppActive = true;
                             }
@@ -353,9 +353,9 @@ namespace WpfControlEx.Controls
                     {
                         foreach (var w in Application.Current.Windows)
                         {
-                            if (w is MyWindowBase)
+                            if (w is WindowBase)
                             {
-                                MyWindowBase win = w as MyWindowBase;
+                                WindowBase win = w as WindowBase;
                                 if (win.IsAppActive)
                                     win.IsAppActive = false;
                             }

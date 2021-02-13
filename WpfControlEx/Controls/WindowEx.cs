@@ -40,7 +40,7 @@ namespace WpfControlEx.Controls
     [TemplatePart(Name = TopLeftResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = BottomLeftResizerName, Type = typeof(Thumb))]
     [TemplatePart(Name = PART_MaskGrid, Type = typeof(UIElement))]
-    public class WindowEx : MyWindowBase
+    public class WindowEx : WindowBase
     {
         #region 常量
         private const string PART_Icon = "PART_Icon";
