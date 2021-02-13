@@ -6,7 +6,7 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/WpfControlEx;component/Localizations/Language_zh-Hans.xaml"/>
+        <ResourceDictionary Source="/WpfControlEx;component/Localizations/Language_en.xaml"/>
         <ResourceDictionary Source="/WpfControlEx;component/Themes/ThemeLightBlue.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
