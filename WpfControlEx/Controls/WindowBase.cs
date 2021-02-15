@@ -34,6 +34,32 @@ namespace WpfControlEx.Controls
 
         #endregion
 
+        #region ThemesButtonTips
+
+        /// <summary>
+        /// 主题
+        /// </summary>
+        public static readonly DependencyProperty ThemesButtonTipsProperty
+            = DependencyProperty.Register("ThemesButtonTips", typeof(string), typeof(WindowBase),
+                new PropertyMetadata("Themes"));
+
+        /// <summary>
+        /// 主题
+        /// </summary>
+        public string ThemesButtonTips
+        {
+            get
+            {
+                return (string)GetValue(ThemesButtonTipsProperty);
+            }
+            set
+            {
+                SetValue(ThemesButtonTipsProperty, value);
+            }
+        }
+
+        #endregion
+
         #region MinimizeButtonTips
 
         /// <summary>

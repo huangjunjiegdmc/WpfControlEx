@@ -97,6 +97,10 @@ namespace WpfControlEx.Utils
                 System.Globalization.CultureInfo.CurrentCulture = culture;
                 System.Globalization.CultureInfo.CurrentUICulture = culture;
                 #endregion
+
+                //更新主题菜单名称
+                Controls.WindowEx mainWindow = Application.Current.MainWindow as Controls.WindowEx;
+                mainWindow.UpdateThemeMenuUI();
             }
             catch (Exception)
             {
@@ -153,6 +157,10 @@ namespace WpfControlEx.Utils
                 System.Globalization.CultureInfo.CurrentCulture = culture;
                 System.Globalization.CultureInfo.CurrentUICulture = culture;
                 #endregion
+
+                //更新主题菜单名称
+                Controls.WindowEx mainWindow = Application.Current.MainWindow as Controls.WindowEx;
+                mainWindow.UpdateThemeMenuUI();
             }
             catch (Exception)
             {

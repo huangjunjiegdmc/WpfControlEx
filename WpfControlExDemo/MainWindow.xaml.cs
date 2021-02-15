@@ -26,7 +26,6 @@ namespace WpfControlExDemo
     /// </summary>
     public partial class MainWindow : WindowEx
     {
-
         public MainWindow()
         {
             InitializeComponent();
@@ -68,17 +67,7 @@ namespace WpfControlExDemo
 
         private void btnru_Click(object sender, RoutedEventArgs e)
         {
-            LanguageHelper.SetLanguage(@"/WpfControlExDemo;component/Localizations/Language_ru.xaml", "ru");
-        }
-
-        private void btnTheme_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.ApplyTheme("LightGreen");
-        }
-
-        private void btnBlue_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.ApplyTheme("LightBlue");
+            LanguageHelper.SetLanguage(@"/WpfControlExDemo;component/Localizations/WpfControlEx/Language_ru.xaml", "ru");
         }
     }
 }

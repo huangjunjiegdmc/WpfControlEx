@@ -3,6 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WpfControlEx.Controls"
     xmlns:converter="clr-namespace:WpfControlEx.Converter"
+    xmlns:theme="clr-namespace:WpfControlEx.Themes"
+    xmlns:helper="clr-namespace:WpfControlEx.Controls.Helper"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
@@ -11,7 +13,6 @@
     </ResourceDictionary.MergedDictionaries>
     
     <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-
     
     <Style TargetType="{x:Type controls:WindowEx}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
@@ -25,10 +26,12 @@
         <Setter Property="MinimizeMenuContent" Value="{DynamicResource Minimize(N)}"/>
         <Setter Property="MaximizeMenuContent" Value="{DynamicResource Maximize(X)}"/>
         <Setter Property="CloseMenuContent" Value="{DynamicResource Close(C)}"/>
+        <Setter Property="ThemesButtonTips" Value="{DynamicResource Themes}"/>
         <Setter Property="MinimizeButtonTips" Value="{DynamicResource Minimize}"/>
         <Setter Property="MaximizeButtonTips" Value="{DynamicResource Maximize}"/>
         <Setter Property="RestoreButtonTips" Value="{DynamicResource Restore}"/>
         <Setter Property="CloseButtonTips" Value="{DynamicResource Close}"/>
+        <Setter Property="ThemeContextMenu" Value="{StaticResource themeMenu}"/>
         <Setter Property="MinHeight" Value="200"/>
         <Setter Property="MinWidth" Value="300"/>
         <Setter Property="Template">
@@ -78,6 +81,12 @@
                                                            VerticalAlignment="Center" 
                                                            Margin="5,0,0,0"/>
                                                 <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                    <controls:DropDownButton Width="40" Height="30"
+                                                                             ToolTip="{TemplateBinding ThemesButtonTips}"
+                                                                             DropDownContextMenu="{TemplateBinding ThemeContextMenu}"
+                                                                             Style="{StaticResource DropDownButtonThemes}"
+                                                                             Padding="5,0,5,0" VerticalAlignment="Top">
+                                                    </controls:DropDownButton>
                                                     <Button x:Name="PART_TitleMinimizeButton"
                                                     Width="40" Height="30"  ToolTip="{TemplateBinding MinimizeButtonTips}"
                                                     Style="{StaticResource ButtonMinimize}" 
