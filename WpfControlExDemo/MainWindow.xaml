@@ -29,10 +29,5 @@
             <Button x:Name="btnen" Width="100" Content="Set en" Click="btnen_Click"/>
             <Button x:Name="btnRu" Width="100" Content="Set local ru" Click="btnru_Click"/>
         </StackPanel>
-
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
-            <Button x:Name="btnTheme" Width="100" Content="SetGreen" Click="btnTheme_Click"/>
-            <Button x:Name="btnBlue" Width="100" Content="SetBlue" Click="btnBlue_Click"/>
-        </StackPanel>
     </Grid>
 </wpfcontrolex:WindowEx>

@@ -4,10 +4,18 @@
 
     <!--#region Windows Commands-->
 
+    <s:String x:Key="Themes">主题</s:String>
     <s:String x:Key="Minimize">最小化</s:String>
     <s:String x:Key="Maximize">最大化</s:String>
     <s:String x:Key="Restore">向下还原</s:String>
     <s:String x:Key="Close">关闭</s:String>
+
+    <!--#endregion-->
+
+    <!--#region Theme Menu-->
+
+    <s:String x:Key="Blue">蓝色</s:String>
+    <s:String x:Key="Green">绿色</s:String>
 
     <!--#endregion-->
 

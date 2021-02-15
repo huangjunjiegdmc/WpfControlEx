@@ -51,6 +51,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ContextMenuEx.cs" />
+    <Compile Include="Controls\DropDownButton.cs" />
+    <Compile Include="Controls\MenuItemEx.cs" />
+    <Compile Include="Controls\RelayCommand.cs" />
+    <Compile Include="Themes\ThemeModel.cs" />
     <Compile Include="Utils\LanguageEnum.cs" />
     <Compile Include="Utils\LanguageHelper.cs" />
     <Compile Include="Themes\ThemeManager.cs" />

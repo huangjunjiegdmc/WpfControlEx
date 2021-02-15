@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace WpfControlEx.Themes
 {
@@ -51,10 +54,9 @@ namespace WpfControlEx.Themes
             if (themeName == string.Empty)
                 return;
 
-            ContentControl control = d as ContentControl;
-            if (control != null)
+            if (GetThemes().Any(p => p.ThemeKey == themeName))
             {
-                control.ApplyTheme(themeName);
+                Application.Current.ApplyTheme(themeName);
             }
         }
 
@@ -65,12 +67,21 @@ namespace WpfControlEx.Themes
         /// 获取支持的主题列表
         /// </summary>
         /// <returns></returns>
-        public static string[] GetThemes()
+        public static List<ThemeModel> GetThemes()
         {
-            string[] themes = new string[]
+            List<ThemeModel> themes = new List<ThemeModel>();
+            themes.Add(new ThemeModel()
             {
-                "LightBlue","LightGreen"
-            };
+                ThemeColorPreview = new SolidColorBrush(Color.FromArgb(255, 24, 144, 255)),
+                ThemeKey = "LightBlue",
+                ThemeName = Utils.LanguageHelper.L("Blue")
+            });
+            themes.Add(new ThemeModel()
+            {
+                ThemeColorPreview = new SolidColorBrush(Color.FromArgb(255, 66, 160, 79)),
+                ThemeKey = "LightGreen",
+                ThemeName = Utils.LanguageHelper.L("Green")
+            });
             return themes;
         }
 
@@ -134,6 +145,23 @@ namespace WpfControlEx.Themes
                 app.Resources.MergedDictionaries.Add(newRd);
             }
             catch { }
+        }
+    }
+
+    public class ThemeInstance
+    {
+        private static List<ThemeModel> _ThemeList = ThemeManager.GetThemes();
+
+        public static List<ThemeModel> ThemeList
+        {
+            get
+            {
+                return _ThemeList;
+            }
+            set
+            {
+                _ThemeList = value;
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfControlEx.Controls.Helper;
 using WpfControlEx.Controls.Native;
+using WpfControlEx.Themes;
 
 namespace WpfControlEx.Controls
 {
@@ -197,6 +198,20 @@ namespace WpfControlEx.Controls
 
         #endregion
 
+        #region ThemeMenu
+
+        public static readonly DependencyProperty ThemeContextMenuProperty =
+            DependencyProperty.Register("ThemeContextMenu", typeof(ContextMenu), typeof(WindowEx),
+                new FrameworkPropertyMetadata(null));
+
+        public ContextMenu ThemeContextMenu
+        {
+            get { return (ContextMenu)GetValue(ThemeContextMenuProperty); }
+            set { SetValue(ThemeContextMenuProperty, value); }
+        }
+
+        #endregion
+
         #endregion
 
         static WindowEx()
@@ -245,7 +260,7 @@ namespace WpfControlEx.Controls
             Rect rect = SystemParameters.WorkArea;
             MaxWidth = rect.Width;
             MaxHeight = rect.Height;
-            
+
             icon = GetTemplateChild(PART_Icon) as Image;
             icon.MouseDown += Icon_MouseDown;
 
@@ -418,6 +433,20 @@ namespace WpfControlEx.Controls
                 }
                 catch { }
             }
+        }
+
+        /// <summary>
+        /// 更新主题菜单名称
+        /// </summary>
+        public void UpdateThemeMenuUI()
+        {
+            ThemeInstance.ThemeList = ThemeManager.GetThemes();
+            ThemeContextMenu = new ContextMenuEx()
+            {
+                ItemContainerStyle = Application.Current.TryFindResource("themeMenuItemStyle") as Style,
+                ItemsSource = ThemeInstance.ThemeList,
+                ItemTemplate = Application.Current.TryFindResource("themeMenuTemplate") as DataTemplate
+            };
         }
 
         /// <summary>
