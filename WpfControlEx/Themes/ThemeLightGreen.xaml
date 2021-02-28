@@ -389,9 +389,10 @@
         </Grid>
     </DataTemplate>
 
+    <theme:ThemeInstance x:Key="themeInstance"/>
     <controls:ContextMenuEx x:Key="themeMenu"
                             ItemContainerStyle="{DynamicResource themeMenuItemStyle}"
-                            ItemsSource="{Binding Source={x:Static theme:ThemeInstance.ThemeList}}"
+                            ItemsSource="{Binding Source={StaticResource themeInstance}, Path=ThemeList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             ItemTemplate="{StaticResource themeMenuTemplate}">
     </controls:ContextMenuEx>
 </ResourceDictionary>

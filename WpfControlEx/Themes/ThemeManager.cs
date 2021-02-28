@@ -150,6 +150,11 @@ namespace WpfControlEx.Themes
 
     public class ThemeInstance
     {
+        /// <summary>
+        /// 新建静态属性变更通知
+        /// </summary>
+        public static event EventHandler<PropertyChangedEventArgs> StaticPropertyChanged;
+
         private static List<ThemeModel> _ThemeList = ThemeManager.GetThemes();
 
         public static List<ThemeModel> ThemeList
@@ -161,6 +166,8 @@ namespace WpfControlEx.Themes
             set
             {
                 _ThemeList = value;
+                //调用通知
+                StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(nameof(ThemeList)));
             }
         }
     }

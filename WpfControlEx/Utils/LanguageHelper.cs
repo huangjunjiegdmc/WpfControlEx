@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 using System.Xml;
+using WpfControlEx.Themes;
 
 namespace WpfControlEx.Utils
 {
@@ -99,8 +100,7 @@ namespace WpfControlEx.Utils
                 #endregion
 
                 //更新主题菜单名称
-                Controls.WindowEx mainWindow = Application.Current.MainWindow as Controls.WindowEx;
-                mainWindow.UpdateThemeMenuUI();
+                ThemeInstance.ThemeList = ThemeManager.GetThemes();
             }
             catch (Exception)
             {
@@ -159,8 +159,7 @@ namespace WpfControlEx.Utils
                 #endregion
 
                 //更新主题菜单名称
-                Controls.WindowEx mainWindow = Application.Current.MainWindow as Controls.WindowEx;
-                mainWindow.UpdateThemeMenuUI();
+                ThemeInstance.ThemeList = ThemeManager.GetThemes();
             }
             catch (Exception)
             {
