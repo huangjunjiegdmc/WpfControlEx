@@ -10,6 +10,143 @@
                        WindowStartupLocation="CenterScreen"
                        Icon="Images/logo.ico" Style="{DynamicResource WindowExStyle1}">
 
+    <Window.Resources>
+        <DrawingImage x:Key="Image.User">            
+            <DrawingImage.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FFFC7070"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry >M782.18 906l-636.38-0.22a26 26 0 0 1-20.68-41.36A418.88 418.88 0 0 1 431.7 694q16-1.24 32.36-1.22t32.36 1.24a412.52 412.52 0 0 1 43.36 5.62 407.04 407.04 0 0 1 43.52 10.36 421.2 421.2 0 0 1 219.58 154.7A26 26 0 0 1 782.18 906z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FFFC5454"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M583.3 710a120.42 120.42 0 0 1-238.44-0.1 418.1 418.1 0 0 1 43.5-10.34c-0.18-1.84-0.28-3.7-0.32-5.58h152c0 1.88-0.12 3.74-0.3 5.6a407.04 407.04 0 0 1 43.56 10.42z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FFF9BF87"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M540.14 616.56v77.42c0 1.88-0.12 3.74-0.3 5.6a76 76 0 0 1-151.44 0c-0.18-1.84-0.28-3.7-0.32-5.58v-77.36zM278.22 373.6h134.8v97.74h-134.8a48.9 48.9 0 0 1-48.82-48.96 48.84 48.84 0 0 1 48.82-48.78zM646.36 373.72h-135.78v97.74h135.78a48.9 48.9 0 0 0 48.86-48.92 48.84 48.84 0 0 0-48.86-48.82z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF495057"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M317.42 198.24h95.36v190.82h-136.94a36.22 36.22 0 0 1-36.22-36.22V276a77.78 77.78 0 0 1 77.8-77.76zM652.17 389.168l-136.92-0.048 0.066-190.82 95.36 0.034a77.78 77.78 0 0 1 77.752 77.806l-0.026 76.82a36.22 36.22 0 0 1-36.232 36.208z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF495057"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M301.2 295.568l0.018-49.58a124 124 0 0 1 124.044-123.958l244 0.086a9.88 9.88 0 0 1 9.876 9.882l-0.014 39.68a124 124 0 0 1-124.044 123.958l-253.88-0.088z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FFFFCC90"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M410.18 282h108a134.36 134.36 0 0 1 134.36 134.36v54.68a188.3 188.3 0 0 1-188.3 188.3 188.3 188.3 0 0 1-188.3-188.3v-54.72A134.36 134.36 0 0 1 410.18 282z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF495057"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M411.48 476.26h-67.58a31.22 31.22 0 0 1-31.14-31.22v-24.48a31.22 31.22 0 0 1 31.24-31.2h67.58a31.22 31.22 0 0 1 31.14 31.22v24.44a31.22 31.22 0 0 1-31.24 31.24zM344 401.4a19.18 19.18 0 0 0-19.14 19.18v24.42a19.18 19.18 0 0 0 19.14 19.18h67.58a19.18 19.18 0 0 0 19.14-19.18v-24.4a19.18 19.18 0 0 0-19.14-19.18zM584.38 476.32H516.8a31.22 31.22 0 0 1-31.14-31.22v-24.48a31.22 31.22 0 0 1 31.16-31.2h67.58a31.22 31.22 0 0 1 31.14 31.22v24.44a31.22 31.22 0 0 1-31.16 31.24z m-67.56-74.86a19.18 19.18 0 0 0-19.14 19.18v24.44a19.18 19.18 0 0 0 19.14 19.18h67.58a19.18 19.18 0 0 0 19.14-19.18v-24.42a19.18 19.18 0 0 0-19.14-19.18z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF495057"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M436.64 426.64h55.02v12.04h-55.02z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF495057"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M360.84 432.8a16.88 16.86 90 1 0 33.72 0 16.88 16.86 90 1 0-33.72 0Z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF495057"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M533.74 432.86a16.88 16.86 90 1 0 33.72 0 16.88 16.86 90 1 0-33.72 0Z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF495057"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M464 595.36A72 72 0 0 1 403.24 562a6 6 0 1 1 10.12-6.5 60.24 60.24 0 0 0 101.52 0 6 6 0 1 1 10.1 6.5A72 72 0 0 1 464 595.36zM914 884.44v-2.2c-0.14-121.74-100-221.48-222.62-222.22C567.08 659.26 466 759.1 466 882.4v2a60.3 60.3 0 0 0 60.52 59.52l326.92 0.1A60.32 60.32 0 0 0 914 884.44z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FFF7BE1C"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M599.72 762.36a3 3 0 0 0 3.84 0.3 149.84 149.84 0 0 1 172.92 0 3 3 0 0 0 3.84-0.3l27.76-27.54a2.96 2.96 0 0 0-0.28-4.46 194.78 194.78 0 0 0-235.56 0 2.96 2.96 0 0 0-0.28 4.44z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FFFC7070"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M811.72 797.72a146.8 146.8 0 0 1 27.6 82.96 2.98 2.98 0 0 0 2.98 2.92h38.84a2.98 2.98 0 0 0 3-3 190.98 190.98 0 0 0-39.86-114 3 3 0 0 0-4.48-0.28L812 793.9a2.94 2.94 0 0 0-0.28 3.82z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF20C997"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M535.82 766.52a190.98 190.98 0 0 0-40 114 2.98 2.98 0 0 0 3 3h38.84a2.98 2.98 0 0 0 2.98-2.92 146.8 146.8 0 0 1 27.64-82.94 2.94 2.94 0 0 0-0.3-3.82l-27.74-27.56a3 3 0 0 0-4.42 0.24z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FFCED4DA"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M773.74 808.44l-74 73.38a15 15 0 0 1-21.12 0 14.76 14.76 0 0 1 0-20.98l74-73.38a15 15 0 0 1 21.12 0 14.76 14.76 0 0 1 0 20.98z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF868E96"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <Geometry>M653.8 870.3a36.2 35.96 0 1 0 72.4 0 36.2 35.96 0 1 0-72.4 0Z</Geometry>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -28,6 +165,9 @@
             <Button x:Name="btnzhHant" Width="100" Content="Setzh Hant" Click="btnzhHant_Click"/>
             <Button x:Name="btnen" Width="100" Content="Set en" Click="btnen_Click"/>
             <Button x:Name="btnRu" Width="100" Content="Set local ru" Click="btnru_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="{StaticResource Image.User}" Margin="0 10 0 0" Stretch="Fill" Width="100" Height="100"></Image>
         </StackPanel>
     </Grid>
 </wpfcontrolex:WindowEx>

@@ -2,9 +2,71 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib"
                     xmlns:lc="clr-namespace:WpfControlExDemo"
-                    xmlns:Controls="clr-namespace:WpfControlEx.Controls;assembly=WpfControlEx">
+                    xmlns:controls="clr-namespace:WpfControlEx.Controls;assembly=WpfControlEx">
 
-    <Style x:Key="WindowExStyle1" TargetType="{x:Type Controls:WindowEx}">
+    <Style x:Key="DropDownButtonSettingMenu" TargetType="{x:Type controls:DropDownButton}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:DropDownButton}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Path Stretch="Fill" Stroke="White" StrokeThickness="1" Width="12" Height="8" Data="{StaticResource DropDownGeometry}"></Path>
+                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource TitleButtonMouseOverBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource TitleButtonPressedBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background"  Value="{StaticResource TitleButtonPressedBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DropDownButtonUser" TargetType="{x:Type controls:DropDownButton}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:DropDownButton}">
+                    <Grid Background="{TemplateBinding Background}" Margin="5,0,5,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="User name" Foreground="White" FontSize="12" VerticalAlignment="Center" Margin="15,0,5,0"/>
+                        <Path Grid.Column="1" Stretch="Fill" Stroke="White" StrokeThickness="1" Width="16" Height="14" Data="{StaticResource UserGeometry}"
+                              Margin="0,0,15,0"></Path>
+                        <ContentPresenter Grid.Column="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource TitleButtonMouseOverBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource TitleButtonPressedBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background"  Value="{StaticResource TitleButtonPressedBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="WindowExStyle1" TargetType="{x:Type controls:WindowEx}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
@@ -25,7 +87,7 @@
         <Setter Property="MinWidth" Value="300"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Controls:WindowEx}">
+                <ControlTemplate TargetType="{x:Type controls:WindowEx}">
                     <!--最外层的Border Background="White"保证窗口inactive时，PART_WindowBorder和PART_WindowTitleBackground一样效果-->
                     <Border Background="White">
                         <Grid>
@@ -75,16 +137,16 @@
                                                     VerticalAlignment="Top" HorizontalAlignment="Center"
                                                     Margin="0,5,0,0"/>
                                                 <StackPanel Grid.Column="2" Orientation="Horizontal">
-                                                    <Button Grid.Column="0"
-                                                    Width="40" Height="30"  ToolTip="用户"
-                                                    Style="{StaticResource ButtonMinimize}" 
-                                                    Padding="5,0,5,0" VerticalAlignment="Top"/>
-                                                    <Controls:DropDownButton Width="40" Height="30"
+                                                    <controls:DropDownButton MinWidth="40" Height="30" ToolTip="用户"
+                                                                             Style="{StaticResource DropDownButtonUser}"
+                                                                             Padding="5,0,5,0" VerticalAlignment="Top">
+                                                    </controls:DropDownButton>
+                                                    <controls:DropDownButton Width="40" Height="30"
                                                                              ToolTip="{TemplateBinding ThemesButtonTips}"
                                                                              DropDownContextMenu="{TemplateBinding ThemeContextMenu}"
                                                                              Style="{StaticResource DropDownButtonThemes}"
                                                                              Padding="5,0,5,0" VerticalAlignment="Top">
-                                                    </Controls:DropDownButton>
+                                                    </controls:DropDownButton>
                                                     <Button x:Name="PART_TitleMinimizeButton"
                                                     Width="40" Height="30"  ToolTip="{TemplateBinding MinimizeButtonTips}"
                                                     Style="{StaticResource ButtonMinimize}" 
@@ -102,6 +164,12 @@
                                                     Style="{StaticResource ButtonClose}"
                                                     HorizontalAlignment="Right" 
                                                     Margin="0,0,5,0" VerticalAlignment="Top" />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                    <controls:DropDownButton Width="40" Height="30" Margin="0,0,5,0"
+                                                                             Style="{StaticResource DropDownButtonSettingMenu}"
+                                                                             Padding="5,0,5,0" VerticalAlignment="Bottom">
+                                                    </controls:DropDownButton>
                                                 </StackPanel>
                                             </Grid>
                                         </Border>
