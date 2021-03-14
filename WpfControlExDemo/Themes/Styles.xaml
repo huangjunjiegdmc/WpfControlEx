@@ -67,24 +67,7 @@
     </Style>
 
     <Style x:Key="WindowExStyle1" TargetType="{x:Type controls:WindowEx}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
-        <Setter Property="WindowStyle" Value="None"/>
-        <Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
-        <Setter Property="AllowsTransparency" Value="True"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="RestoreMenuContent" Value="{DynamicResource Restore(R)}"/>
-        <Setter Property="MoveMenuContent" Value="{DynamicResource Move(M)}"/>
-        <Setter Property="SizeMenuContent" Value="{DynamicResource Size(S)}"/>
-        <Setter Property="MinimizeMenuContent" Value="{DynamicResource Minimize(N)}"/>
-        <Setter Property="MaximizeMenuContent" Value="{DynamicResource Maximize(X)}"/>
-        <Setter Property="CloseMenuContent" Value="{DynamicResource Close(C)}"/>
-        <Setter Property="ThemesButtonTips" Value="{DynamicResource Themes}"/>
-        <Setter Property="MinimizeButtonTips" Value="{DynamicResource Minimize}"/>
-        <Setter Property="MaximizeButtonTips" Value="{DynamicResource Maximize}"/>
-        <Setter Property="RestoreButtonTips" Value="{DynamicResource Restore}"/>
-        <Setter Property="CloseButtonTips" Value="{DynamicResource Close}"/>
-        <Setter Property="MinHeight" Value="200"/>
-        <Setter Property="MinWidth" Value="300"/>
+        <!--控件库已设置过的属性，如果不需要修改，不需要重新设置-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:WindowEx}">
